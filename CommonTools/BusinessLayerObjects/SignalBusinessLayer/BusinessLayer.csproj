@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BC4A8E46-1871-4FEF-B0E3-9E35F6401C8C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SignalBusinessLayer</RootNamespace>
+    <AssemblyName>SignalBusinessLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Staging|AnyCPU'">
+    <OutputPath>bin\Staging\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Beta|AnyCPU'">
+    <OutputPath>bin\Beta\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Beta2|AnyCPU'">
+    <OutputPath>bin\Beta2\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DevApp|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\DevApp\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Production Release|AnyCPU'">
+    <OutputPath>bin\Production Release\</OutputPath>
+    <DefineConstants>TRACE;PRODUCTION_RELEASE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Azure App Service Production|AnyCPU'">
+    <OutputPath>bin\Azure App Service Production\</OutputPath>
+    <DefineConstants>TRACE;PRODUCTION_RELEASE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SignalCi|AnyCPU'">
+    <OutputPath>bin\SignalCi\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.0.5.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EPPlus.4.0.5\lib\net20\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FastMember, Version=1.0.0.9, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\FastMember.1.0.0.11\lib\net40\FastMember.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Analytics\FromDiskTemplateProcessor.cs" />
+    <Compile Include="Analytics\AlgorithmVersionProcessor.cs" />
+    <Compile Include="Analytics\ITemplateProcessor.cs" />
+    <Compile Include="Analytics\ResultsReadyProcessor.cs" />
+    <Compile Include="Analytics\TemplateProcessor.cs" />
+    <Compile Include="BaiProcessor.cs" />
+    <Compile Include="BehaviorBase.cs" />
+    <Compile Include="CasePaymentProcessor.cs" />
+    <Compile Include="EventsProcessor.cs" />
+    <Compile Include="Events\SgnlEventsProcessor.cs" />
+    <Compile Include="MailMergeProcessor.cs" />
+    <Compile Include="PrsResult\IPrsResultsProcessor.cs" />
+    <Compile Include="PrsResult\NYResultsProcessor.cs" />
+    <Compile Include="PrsResult\PrsResultsProcessor.cs" />
+    <Compile Include="CaseTransactionProcessor.cs" />
+    <Compile Include="DateTypes.cs" />
+    <Compile Include="EnumListItemsProcessor.cs" />
+    <Compile Include="LisCasesProcessor.cs" />
+    <Compile Include="NotesProcessor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PrsResult\RandomPrsResultProcessor.cs" />
+    <Compile Include="PrsResult\PrsRandomResultGenerator.cs" />
+    <Compile Include="ReportsProcessor.cs" />
+    <Compile Include="SignalBusinessLayerConverter.cs" />
+    <Compile Include="TransactionProcessor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Lib35\SGNLAzureDeployment\AzureDeployment.csproj">
+      <Project>{8B09F37F-62AC-40F8-9A87-D79E8EC3D1DC}</Project>
+      <Name>AzureDeployment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AppDataLib\AppDataLib.SgnlExceptions\AppDataLib.Exceptions.csproj">
+      <Project>{6ea8d9aa-3fe2-45d8-92a6-b536a4ebef5a}</Project>
+      <Name>AppDataLib.Exceptions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AppDataLib\Billing\AppDataLib.Billing.csproj">
+      <Project>{49c919d4-cf82-477a-a09b-438ddfb8216e}</Project>
+      <Name>AppDataLib.Billing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AppDataLib\Enums\AppDataLib.Enums.csproj">
+      <Project>{e298449b-f51d-49af-81a1-c6780296cd2c}</Project>
+      <Name>AppDataLib.Enums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CommonUtils\CommonUtils.AppConfiguration\CommonUtils.AppConfiguration.csproj">
+      <Project>{C2178048-9A6D-445F-9F22-9FFD190127DE}</Project>
+      <Name>CommonUtils.AppConfiguration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CommonUtils\CommonUtils.Email\CommonUtils.Email.csproj">
+      <Project>{0842f8c5-99a5-4c13-a24c-f76d2113af60}</Project>
+      <Name>CommonUtils.Email</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CommonUtils\CommonUtils.Html\CommonUtils.Html.csproj">
+      <Project>{e7177421-a202-41b9-be3a-941ff0157135}</Project>
+      <Name>CommonUtils.Html</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CommonUtils\DataStructures\CommonUtils.DataStructures.csproj">
+      <Project>{868d6981-ea83-4cf7-a563-86f58c9a77fe}</Project>
+      <Name>CommonUtils.DataStructures</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CommonUtils\DataTableUtils\CommonUtils.DataTableUtils.csproj">
+      <Project>{5bb58485-e8d8-4314-9f00-514f29fb80a3}</Project>
+      <Name>CommonUtils.DataTableUtils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CommonUtils\DateUtils\CommonUtils.DateUtils.csproj">
+      <Project>{57C8C49B-8FB9-4903-AB31-2BA7593EDF30}</Project>
+      <Name>CommonUtils.DateUtils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CommonUtils\ExceptionUtils\CommonUtils.Exception.csproj">
+      <Project>{3fead7c0-7fc3-4f61-89d0-501153733ee3}</Project>
+      <Name>CommonUtils.Exception</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CommonUtils\Json\CommonUtils.Json.csproj">
+      <Project>{e6b3c393-1823-487b-b2f5-eee5bc7d0528}</Project>
+      <Name>CommonUtils.Json</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CommonUtils\Logging\CommonUtils.Logging.csproj">
+      <Project>{8857177F-4D00-4C57-BD56-41B0AD1BE9AA}</Project>
+      <Name>CommonUtils.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CommonUtils\Reflection\CommonUtils.Reflection.csproj">
+      <Project>{A91FF807-0524-481B-888F-E323076C340E}</Project>
+      <Name>CommonUtils.Reflection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\PathCentralApiLib\PathCentralApiLib.csproj">
+      <Project>{424DBE24-0AB8-45C3-8B8B-0499B5D35B48}</Project>
+      <Name>PathCentralApiLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SignalDataLayer\DataLayer.csproj">
+      <Project>{0170545d-8ff2-4a4a-835b-4a5a5be38ec9}</Project>
+      <Name>DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SignalViewModel\ViewModel.csproj">
+      <Project>{a2c78f9a-0de3-4c59-a7d8-5a72d53690c3}</Project>
+      <Name>ViewModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="README.md" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

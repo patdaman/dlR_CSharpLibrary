@@ -1,0 +1,1534 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="XifinLISModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="XIFIN_Accession">
+          <Key>
+            <PropertyRef Name="AccessionId" />
+          </Key>
+          <Property Name="LabMessageId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AccessionId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="PatientId" Type="int" />
+          <Property Name="ExternalAccessionID" Type="nvarchar" MaxLength="50" />
+          <Property Name="BillTypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReasonForReferral" Type="nvarchar(max)" />
+          <Property Name="ClinicalData" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="0" />
+          <Property Name="OrderDate" Type="datetime2" Precision="0" />
+          <Property Name="LastCompletedDate" Type="datetime2" Precision="0" />
+          <Property Name="Destination" Type="nvarchar" MaxLength="256" />
+          <Property Name="CompletedDate" Type="datetime2" Precision="0" />
+          <Property Name="ClinicalHistory" Type="nvarchar(max)" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="ClientCode" Type="varchar" MaxLength="20" />
+          <Property Name="FacilityId" Type="int" />
+          <Property Name="LabId" Type="int" />
+          <Property Name="RequisitionNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrderingPhysician" Type="int" />
+          <Property Name="RenderingPhysician" Type="int" />
+          <Property Name="Deficiencies" Type="nvarchar" MaxLength="500" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="XIFIN_Address">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="AddressId" />
+            <PropertyRef Name="Category" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AddressId" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Category" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address3" Type="nvarchar" MaxLength="100" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="StateProvince" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="XIFIN_Case">
+          <Key>
+            <PropertyRef Name="CaseNo" />
+            <PropertyRef Name="AccessionId" />
+          </Key>
+          <Property Name="CaseNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AccessionId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="FacilityID" Type="int" />
+          <Property Name="LabID" Type="int" />
+          <Property Name="Destination" Type="nvarchar" MaxLength="256" />
+          <Property Name="CompletedDate" Type="datetime2" Precision="7" />
+          <Property Name="LastCompletedDate" Type="datetime2" Precision="0" />
+          <Property Name="CaseTypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientCaseNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="TreatingPhysician" Type="nvarchar" MaxLength="150" />
+          <Property Name="CLIANumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="CLIAName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CLIAAddress1" Type="nvarchar" MaxLength="250" />
+          <Property Name="CLIAAddress2" Type="nvarchar" MaxLength="250" />
+          <Property Name="CLIAAddress3" Type="nvarchar" MaxLength="250" />
+          <Property Name="CLIACity" Type="nvarchar" MaxLength="100" />
+          <Property Name="CLIAStateProvince" Type="nvarchar" MaxLength="50" />
+          <Property Name="CLIACountry" Type="nvarchar" MaxLength="50" />
+          <Property Name="CLIAPostalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="WorkflowStep" Type="nvarchar" MaxLength="250" />
+          <Property Name="QNSReason" Type="nvarchar" MaxLength="250" />
+          <Property Name="OriginalAccessionId" Type="int" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" Nullable="false" />
+          <Property Name="isUpdated" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="XIFIN_CaseInsurance">
+          <Key>
+            <PropertyRef Name="InsuranceCode" />
+            <PropertyRef Name="CaseNo" />
+            <PropertyRef Name="PayorId" />
+            <PropertyRef Name="PayorRank" />
+          </Key>
+          <Property Name="InsuranceId" Type="int" />
+          <Property Name="InsuranceCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CaseNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PayorId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PayorRank" Type="int" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="XIFIN_Client">
+          <Key>
+            <PropertyRef Name="ClientCode" />
+          </Key>
+          <Property Name="ClientId" Type="int" />
+          <Property Name="ClientCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ClientName" Type="nvarchar" MaxLength="250" />
+          <Property Name="ExternalClientID" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountManager" Type="nvarchar" MaxLength="250" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="XIFIN_Doctor">
+          <Key>
+            <PropertyRef Name="DoctorId" />
+          </Key>
+          <Property Name="DoctorId" Type="int" Nullable="false" />
+          <Property Name="DoctorTypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Suffix" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="150" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="XIFIN_DoctorIdentification">
+          <Key>
+            <PropertyRef Name="DoctorId" />
+            <PropertyRef Name="LicenseNumber" />
+            <PropertyRef Name="DoctorIdentificationType" />
+          </Key>
+          <Property Name="DoctorId" Type="int" Nullable="false" />
+          <Property Name="LicenseNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DoctorIdentificationType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="XIFIN_Facility">
+          <Key>
+            <PropertyRef Name="FacilityId" />
+          </Key>
+          <Property Name="FacilityId" Type="int" Nullable="false" />
+          <Property Name="FacilityName" Type="nvarchar" MaxLength="250" />
+          <Property Name="ClientCode" Type="varchar" MaxLength="20" />
+          <Property Name="ContactName" Type="nvarchar" MaxLength="250" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="XIFIN_ICD10">
+          <Key>
+            <PropertyRef Name="TestOrderId" />
+            <PropertyRef Name="CaseNo" />
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="TestOrderId" Type="int" Nullable="false" />
+          <Property Name="CaseNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="XIFIN_ICD9">
+          <Key>
+            <PropertyRef Name="TestOrderID" />
+            <PropertyRef Name="CaseNo" />
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="TestOrderID" Type="int" Nullable="false" />
+          <Property Name="CaseNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="XIFIN_LabMessage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="EventType" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="XIFIN_LabMessage_Case">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AccessionId" Type="int" Nullable="false" />
+          <Property Name="CaseNumber" Type="nvarchar" MaxLength="150" />
+          <Property Name="EventType" Type="nvarchar" MaxLength="256" />
+          <Property Name="ReceiveUTCDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="XIFIN_Labs">
+          <Key>
+            <PropertyRef Name="LabId" />
+          </Key>
+          <Property Name="LabId" Type="int" Nullable="false" />
+          <Property Name="LabCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="LabName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientLabID" Type="varchar" MaxLength="10" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="XIFIN_Patient">
+          <Key>
+            <PropertyRef Name="PatientId" />
+          </Key>
+          <Property Name="PatientId" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Suffix" Type="nvarchar" MaxLength="50" />
+          <Property Name="SocialSecurityNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailAddress" Type="nvarchar(max)" />
+          <Property Name="Ethnicity" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaritalStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="MRN" Type="nvarchar" MaxLength="50" />
+          <Property Name="ExternalPatientID" Type="nvarchar" MaxLength="50" />
+          <Property Name="PatientStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" Nullable="false" />
+          <Property Name="isUpdated" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="XIFIN_PatientInsurance">
+          <Key>
+            <PropertyRef Name="CaseNo" />
+            <PropertyRef Name="Rank" />
+            <PropertyRef Name="InsuranceCode" />
+          </Key>
+          <Property Name="PatientId" Type="int" />
+          <Property Name="InsuranceId" Type="int" />
+          <Property Name="CaseNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="InsuranceName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Rank" Type="int" Nullable="false" />
+          <Property Name="HomePlan" Type="nvarchar" MaxLength="50" />
+          <Property Name="PayorGroup" Type="nvarchar" MaxLength="50" />
+          <Property Name="PlanType" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubscriberFirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubscriberLastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubscriberMiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubscriberGender" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubscriberSocialSecurityNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubscriberDateOfBirth" Type="date" />
+          <Property Name="SubscriberAddress1" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubscriberAddress2" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubscriberAddress3" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubscriberCity" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubscriberStateProvince" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubscriberCountry" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubscriberPostalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubscriberPhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="PatientRelation" Type="nvarchar" MaxLength="50" />
+          <Property Name="PolicyNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="GroupNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="AuthorizationNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="InsuranceCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="StateProvince" Type="nvarchar" MaxLength="50" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="XIFIN_Phone">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="Category" />
+            <PropertyRef Name="PhoneId" />
+            <PropertyRef Name="PhoneType" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Category" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="PhoneId" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PhoneType" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Extension" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="XIFIN_Report">
+          <Key>
+            <PropertyRef Name="CaseNo" />
+            <PropertyRef Name="Version" />
+          </Key>
+          <Property Name="CaseNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="VersionTypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SignedDate" Type="datetime" />
+          <Property Name="SignedUserId" Type="int" />
+          <Property Name="SignedUserFirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SignedUserLastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReportComment" Type="nvarchar(max)" />
+          <Property Name="ReportTypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReportTemplateId" Type="int" />
+          <Property Name="ReportTemplateName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DocumentName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MyPRSRiskScore" Type="nvarchar" MaxLength="50" />
+          <Property Name="MyPRSRiskClassification" Type="nvarchar" MaxLength="50" />
+          <Property Name="PatientSubtype" Type="nvarchar" MaxLength="50" />
+          <Property Name="Document" Type="varbinary(max)" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="XIFIN_Result">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="TestOrderID" />
+            <PropertyRef Name="CaseNo" />
+            <PropertyRef Name="ComponentCode" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TestOrderID" Type="int" Nullable="false" />
+          <Property Name="CaseNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ComponentCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ComponentName" Type="nvarchar" MaxLength="250" />
+          <Property Name="DataValue" Type="nvarchar(max)" />
+          <Property Name="GateName" Type="nvarchar" MaxLength="250" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="250" />
+          <Property Name="ComponentTypeName" Type="nvarchar" MaxLength="250" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="XIFIN_Specimen">
+          <Key>
+            <PropertyRef Name="SpecimenID" />
+            <PropertyRef Name="CaseNo" />
+          </Key>
+          <Property Name="SpecimenID" Type="int" Nullable="false" />
+          <Property Name="CaseNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ExternalSpecimenID" Type="nvarchar" MaxLength="50" />
+          <Property Name="BodySiteName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SpecimenName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Volume" Type="nvarchar" MaxLength="50" />
+          <Property Name="CollectionDate" Type="datetime" />
+          <Property Name="ReceivedDate" Type="datetime" />
+          <Property Name="SpecimenTransportName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SpecimenTypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="XIFIN_TestOrder">
+          <Key>
+            <PropertyRef Name="TestOrderID" />
+            <PropertyRef Name="CaseNo" />
+          </Key>
+          <Property Name="TestOrderID" Type="int" Nullable="false" />
+          <Property Name="CaseNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TestCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="TestName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PanelName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TestTypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="XIFIN_TestOrderSpecimen">
+          <Key>
+            <PropertyRef Name="TestOrderID" />
+            <PropertyRef Name="CaseNo" />
+            <PropertyRef Name="SpecimenID" />
+            <PropertyRef Name="ExternalSpecimenID" />
+          </Key>
+          <Property Name="TestOrderID" Type="int" Nullable="false" />
+          <Property Name="CaseNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SpecimenID" Type="int" Nullable="false" />
+          <Property Name="ExternalSpecimenID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Case_Labs">
+          <End Role="XIFIN_Labs" Type="Self.XIFIN_Labs" Multiplicity="0..1" />
+          <End Role="XIFIN_Case" Type="Self.XIFIN_Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XIFIN_Labs">
+              <PropertyRef Name="LabId" />
+            </Principal>
+            <Dependent Role="XIFIN_Case">
+              <PropertyRef Name="LabID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_XIFIN_Accession_XIFIN_Client">
+          <End Role="XIFIN_Client" Type="Self.XIFIN_Client" Multiplicity="0..1" />
+          <End Role="XIFIN_Accession" Type="Self.XIFIN_Accession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XIFIN_Client">
+              <PropertyRef Name="ClientCode" />
+            </Principal>
+            <Dependent Role="XIFIN_Accession">
+              <PropertyRef Name="ClientCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_XIFIN_Accession_XIFIN_Doctor">
+          <End Role="XIFIN_Doctor" Type="Self.XIFIN_Doctor" Multiplicity="0..1" />
+          <End Role="XIFIN_Accession" Type="Self.XIFIN_Accession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XIFIN_Doctor">
+              <PropertyRef Name="DoctorId" />
+            </Principal>
+            <Dependent Role="XIFIN_Accession">
+              <PropertyRef Name="OrderingPhysician" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_XIFIN_Accession_XIFIN_Facility">
+          <End Role="XIFIN_Facility" Type="Self.XIFIN_Facility" Multiplicity="0..1" />
+          <End Role="XIFIN_Accession" Type="Self.XIFIN_Accession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XIFIN_Facility">
+              <PropertyRef Name="FacilityId" />
+            </Principal>
+            <Dependent Role="XIFIN_Accession">
+              <PropertyRef Name="FacilityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_XIFIN_Accession_XIFIN_Patient">
+          <End Role="XIFIN_Patient" Type="Self.XIFIN_Patient" Multiplicity="0..1" />
+          <End Role="XIFIN_Accession" Type="Self.XIFIN_Accession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XIFIN_Patient">
+              <PropertyRef Name="PatientId" />
+            </Principal>
+            <Dependent Role="XIFIN_Accession">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_XIFIN_DoctorIdentification_XIFIN_Doctor">
+          <End Role="XIFIN_Doctor" Type="Self.XIFIN_Doctor" Multiplicity="1" />
+          <End Role="XIFIN_DoctorIdentification" Type="Self.XIFIN_DoctorIdentification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XIFIN_Doctor">
+              <PropertyRef Name="DoctorId" />
+            </Principal>
+            <Dependent Role="XIFIN_DoctorIdentification">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_XIFIN_ICD10_XIFIN_TestOrder">
+          <End Role="XIFIN_TestOrder" Type="Self.XIFIN_TestOrder" Multiplicity="1" />
+          <End Role="XIFIN_ICD10" Type="Self.XIFIN_ICD10" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XIFIN_TestOrder">
+              <PropertyRef Name="TestOrderID" />
+              <PropertyRef Name="CaseNo" />
+            </Principal>
+            <Dependent Role="XIFIN_ICD10">
+              <PropertyRef Name="TestOrderId" />
+              <PropertyRef Name="CaseNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_XIFIN_ICD9_XIFIN_TestOrder">
+          <End Role="XIFIN_TestOrder" Type="Self.XIFIN_TestOrder" Multiplicity="1" />
+          <End Role="XIFIN_ICD9" Type="Self.XIFIN_ICD9" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XIFIN_TestOrder">
+              <PropertyRef Name="TestOrderID" />
+              <PropertyRef Name="CaseNo" />
+            </Principal>
+            <Dependent Role="XIFIN_ICD9">
+              <PropertyRef Name="TestOrderID" />
+              <PropertyRef Name="CaseNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_XIFIN_LabMessage_Case_XIFIN_Accession">
+          <End Role="XIFIN_Accession" Type="Self.XIFIN_Accession" Multiplicity="1" />
+          <End Role="XIFIN_LabMessage_Case" Type="Self.XIFIN_LabMessage_Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XIFIN_Accession">
+              <PropertyRef Name="AccessionId" />
+            </Principal>
+            <Dependent Role="XIFIN_LabMessage_Case">
+              <PropertyRef Name="AccessionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_XIFIN_Result_XIFIN_TestOrder">
+          <End Role="XIFIN_TestOrder" Type="Self.XIFIN_TestOrder" Multiplicity="1" />
+          <End Role="XIFIN_Result" Type="Self.XIFIN_Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XIFIN_TestOrder">
+              <PropertyRef Name="TestOrderID" />
+              <PropertyRef Name="CaseNo" />
+            </Principal>
+            <Dependent Role="XIFIN_Result">
+              <PropertyRef Name="TestOrderID" />
+              <PropertyRef Name="CaseNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_XIFIN_TestOrderSpecimen_XIFIN_TestOrder">
+          <End Role="XIFIN_TestOrder" Type="Self.XIFIN_TestOrder" Multiplicity="1" />
+          <End Role="XIFIN_TestOrderSpecimen" Type="Self.XIFIN_TestOrderSpecimen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XIFIN_TestOrder">
+              <PropertyRef Name="TestOrderID" />
+              <PropertyRef Name="CaseNo" />
+            </Principal>
+            <Dependent Role="XIFIN_TestOrderSpecimen">
+              <PropertyRef Name="TestOrderID" />
+              <PropertyRef Name="CaseNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="XifinLISModelStoreContainer">
+          <EntitySet Name="XIFIN_Accession" EntityType="Self.XIFIN_Accession" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="XIFIN_Address" EntityType="Self.XIFIN_Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="XIFIN_Case" EntityType="Self.XIFIN_Case" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="XIFIN_CaseInsurance" EntityType="Self.XIFIN_CaseInsurance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="XIFIN_Client" EntityType="Self.XIFIN_Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="XIFIN_Doctor" EntityType="Self.XIFIN_Doctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="XIFIN_DoctorIdentification" EntityType="Self.XIFIN_DoctorIdentification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="XIFIN_Facility" EntityType="Self.XIFIN_Facility" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="XIFIN_ICD10" EntityType="Self.XIFIN_ICD10" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="XIFIN_ICD9" EntityType="Self.XIFIN_ICD9" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="XIFIN_LabMessage" EntityType="Self.XIFIN_LabMessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="XIFIN_LabMessage_Case" EntityType="Self.XIFIN_LabMessage_Case" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="XIFIN_Labs" EntityType="Self.XIFIN_Labs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="XIFIN_Patient" EntityType="Self.XIFIN_Patient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="XIFIN_PatientInsurance" EntityType="Self.XIFIN_PatientInsurance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="XIFIN_Phone" EntityType="Self.XIFIN_Phone" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="XIFIN_Report" EntityType="Self.XIFIN_Report" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="XIFIN_Result" EntityType="Self.XIFIN_Result" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="XIFIN_Specimen" EntityType="Self.XIFIN_Specimen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="XIFIN_TestOrder" EntityType="Self.XIFIN_TestOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="XIFIN_TestOrderSpecimen" EntityType="Self.XIFIN_TestOrderSpecimen" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Case_Labs" Association="Self.FK_Case_Labs">
+            <End Role="XIFIN_Labs" EntitySet="XIFIN_Labs" />
+            <End Role="XIFIN_Case" EntitySet="XIFIN_Case" />
+          </AssociationSet>
+          <AssociationSet Name="FK_XIFIN_Accession_XIFIN_Client" Association="Self.FK_XIFIN_Accession_XIFIN_Client">
+            <End Role="XIFIN_Client" EntitySet="XIFIN_Client" />
+            <End Role="XIFIN_Accession" EntitySet="XIFIN_Accession" />
+          </AssociationSet>
+          <AssociationSet Name="FK_XIFIN_Accession_XIFIN_Doctor" Association="Self.FK_XIFIN_Accession_XIFIN_Doctor">
+            <End Role="XIFIN_Doctor" EntitySet="XIFIN_Doctor" />
+            <End Role="XIFIN_Accession" EntitySet="XIFIN_Accession" />
+          </AssociationSet>
+          <AssociationSet Name="FK_XIFIN_Accession_XIFIN_Facility" Association="Self.FK_XIFIN_Accession_XIFIN_Facility">
+            <End Role="XIFIN_Facility" EntitySet="XIFIN_Facility" />
+            <End Role="XIFIN_Accession" EntitySet="XIFIN_Accession" />
+          </AssociationSet>
+          <AssociationSet Name="FK_XIFIN_Accession_XIFIN_Patient" Association="Self.FK_XIFIN_Accession_XIFIN_Patient">
+            <End Role="XIFIN_Patient" EntitySet="XIFIN_Patient" />
+            <End Role="XIFIN_Accession" EntitySet="XIFIN_Accession" />
+          </AssociationSet>
+          <AssociationSet Name="FK_XIFIN_DoctorIdentification_XIFIN_Doctor" Association="Self.FK_XIFIN_DoctorIdentification_XIFIN_Doctor">
+            <End Role="XIFIN_Doctor" EntitySet="XIFIN_Doctor" />
+            <End Role="XIFIN_DoctorIdentification" EntitySet="XIFIN_DoctorIdentification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_XIFIN_ICD10_XIFIN_TestOrder" Association="Self.FK_XIFIN_ICD10_XIFIN_TestOrder">
+            <End Role="XIFIN_TestOrder" EntitySet="XIFIN_TestOrder" />
+            <End Role="XIFIN_ICD10" EntitySet="XIFIN_ICD10" />
+          </AssociationSet>
+          <AssociationSet Name="FK_XIFIN_ICD9_XIFIN_TestOrder" Association="Self.FK_XIFIN_ICD9_XIFIN_TestOrder">
+            <End Role="XIFIN_TestOrder" EntitySet="XIFIN_TestOrder" />
+            <End Role="XIFIN_ICD9" EntitySet="XIFIN_ICD9" />
+          </AssociationSet>
+          <AssociationSet Name="FK_XIFIN_LabMessage_Case_XIFIN_Accession" Association="Self.FK_XIFIN_LabMessage_Case_XIFIN_Accession">
+            <End Role="XIFIN_Accession" EntitySet="XIFIN_Accession" />
+            <End Role="XIFIN_LabMessage_Case" EntitySet="XIFIN_LabMessage_Case" />
+          </AssociationSet>
+          <AssociationSet Name="FK_XIFIN_Result_XIFIN_TestOrder" Association="Self.FK_XIFIN_Result_XIFIN_TestOrder">
+            <End Role="XIFIN_TestOrder" EntitySet="XIFIN_TestOrder" />
+            <End Role="XIFIN_Result" EntitySet="XIFIN_Result" />
+          </AssociationSet>
+          <AssociationSet Name="FK_XIFIN_TestOrderSpecimen_XIFIN_TestOrder" Association="Self.FK_XIFIN_TestOrderSpecimen_XIFIN_TestOrder">
+            <End Role="XIFIN_TestOrder" EntitySet="XIFIN_TestOrder" />
+            <End Role="XIFIN_TestOrderSpecimen" EntitySet="XIFIN_TestOrderSpecimen" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="XifinLISModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="XIFIN_Accession">
+          <Key>
+            <PropertyRef Name="AccessionId" />
+          </Key>
+          <Property Name="LabMessageId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccessionId" Type="Int32" Nullable="false" />
+          <Property Name="PatientId" Type="Int32" />
+          <Property Name="ExternalAccessionID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BillTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReasonForReferral" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClinicalData" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+          <Property Name="OrderDate" Type="DateTime" Precision="0" />
+          <Property Name="CompletedDate" Type="DateTime" Precision="0" />
+          <Property Name="ClinicalHistory" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClientCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FacilityId" Type="Int32" />
+          <Property Name="RequisitionNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderingPhysician" Type="Int32" />
+          <Property Name="RenderingPhysician" Type="Int32" />
+          <Property Name="Deficiencies" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="XIFIN_Client" Relationship="Self.FK_XIFIN_Accession_XIFIN_Client" FromRole="XIFIN_Accession" ToRole="XIFIN_Client" />
+          <NavigationProperty Name="XIFIN_Doctor" Relationship="Self.FK_XIFIN_Accession_XIFIN_Doctor" FromRole="XIFIN_Accession" ToRole="XIFIN_Doctor" />
+          <NavigationProperty Name="XIFIN_Facility" Relationship="Self.FK_XIFIN_Accession_XIFIN_Facility" FromRole="XIFIN_Accession" ToRole="XIFIN_Facility" />
+          <NavigationProperty Name="XIFIN_Patient" Relationship="Self.FK_XIFIN_Accession_XIFIN_Patient" FromRole="XIFIN_Accession" ToRole="XIFIN_Patient" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="LabId" Type="Int32" />
+          <NavigationProperty Name="XIFIN_LabMessage_Case" Relationship="XifinLISModel.FK_XIFIN_LabMessage_Case_XIFIN_Accession" FromRole="XIFIN_Accession" ToRole="XIFIN_LabMessage_Case" />
+          <Property Name="LastCompletedDate" Type="DateTime" Precision="0" />
+          <Property Name="Destination" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="XIFIN_Address">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="AddressId" />
+            <PropertyRef Name="Category" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AddressId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Address1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StateProvince" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="XIFIN_Case">
+          <Key>
+            <PropertyRef Name="CaseNo" />
+            <PropertyRef Name="AccessionId" />
+          </Key>
+          <Property Name="CaseNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccessionId" Type="Int32" Nullable="false" />
+          <Property Name="FacilityID" Type="Int32" />
+          <Property Name="LabID" Type="Int32" />
+          <Property Name="CaseTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientCaseNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TreatingPhysician" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CLIANumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CLIAName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CLIAAddress1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CLIAAddress2" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CLIAAddress3" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CLIACity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CLIAStateProvince" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CLIACountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CLIAPostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WorkflowStep" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="QNSReason" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="OriginalAccessionId" Type="Int32" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="XIFIN_Labs" Relationship="Self.FK_Case_Labs" FromRole="XIFIN_Case" ToRole="XIFIN_Labs" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
+          <Property Name="isUpdated" Type="Boolean" Nullable="false" />
+          <Property Name="Destination" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="CompletedDate" Type="DateTime" Precision="7" />
+          <Property Name="LastCompletedDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="XIFIN_CaseInsurance">
+          <Key>
+            <PropertyRef Name="InsuranceCode" />
+            <PropertyRef Name="CaseNo" />
+            <PropertyRef Name="PayorId" />
+            <PropertyRef Name="PayorRank" />
+          </Key>
+          <Property Name="InsuranceId" Type="Int32" />
+          <Property Name="InsuranceCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CaseNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PayorId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PayorRank" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="XIFIN_Client">
+          <Key>
+            <PropertyRef Name="ClientCode" />
+          </Key>
+          <Property Name="ClientCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClientName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ExternalClientID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountManager" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="XIFIN_Accession" Relationship="Self.FK_XIFIN_Accession_XIFIN_Client" FromRole="XIFIN_Client" ToRole="XIFIN_Accession" />
+          <Property Name="ClientId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="XIFIN_Doctor">
+          <Key>
+            <PropertyRef Name="DoctorId" />
+          </Key>
+          <Property Name="DoctorId" Type="Int32" Nullable="false" />
+          <Property Name="DoctorTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Suffix" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="XIFIN_Accession" Relationship="Self.FK_XIFIN_Accession_XIFIN_Doctor" FromRole="XIFIN_Doctor" ToRole="XIFIN_Accession" />
+          <NavigationProperty Name="XIFIN_DoctorIdentification" Relationship="Self.FK_XIFIN_DoctorIdentification_XIFIN_Doctor" FromRole="XIFIN_Doctor" ToRole="XIFIN_DoctorIdentification" />
+        </EntityType>
+        <EntityType Name="XIFIN_DoctorIdentification">
+          <Key>
+            <PropertyRef Name="DoctorId" />
+            <PropertyRef Name="LicenseNumber" />
+            <PropertyRef Name="DoctorIdentificationType" />
+          </Key>
+          <Property Name="DoctorId" Type="Int32" Nullable="false" />
+          <Property Name="LicenseNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DoctorIdentificationType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="XIFIN_Doctor" Relationship="Self.FK_XIFIN_DoctorIdentification_XIFIN_Doctor" FromRole="XIFIN_DoctorIdentification" ToRole="XIFIN_Doctor" />
+        </EntityType>
+        <EntityType Name="XIFIN_Facility">
+          <Key>
+            <PropertyRef Name="FacilityId" />
+          </Key>
+          <Property Name="FacilityId" Type="Int32" Nullable="false" />
+          <Property Name="FacilityName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ClientCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ContactName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="XIFIN_Accession" Relationship="Self.FK_XIFIN_Accession_XIFIN_Facility" FromRole="XIFIN_Facility" ToRole="XIFIN_Accession" />
+        </EntityType>
+        <EntityType Name="XIFIN_ICD9">
+          <Key>
+            <PropertyRef Name="TestOrderID" />
+            <PropertyRef Name="CaseNo" />
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="TestOrderID" Type="Int32" Nullable="false" />
+          <Property Name="CaseNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="XIFIN_TestOrder" Relationship="Self.FK_XIFIN_ICD9_XIFIN_TestOrder" FromRole="XIFIN_ICD9" ToRole="XIFIN_TestOrder" />
+        </EntityType>
+        <EntityType Name="XIFIN_LabMessage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="EventType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="XIFIN_Labs">
+          <Key>
+            <PropertyRef Name="LabId" />
+          </Key>
+          <Property Name="LabId" Type="Int32" Nullable="false" />
+          <Property Name="LabCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LabName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientLabID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="XIFIN_Case" Relationship="Self.FK_Case_Labs" FromRole="XIFIN_Labs" ToRole="XIFIN_Case" />
+        </EntityType>
+        <EntityType Name="XIFIN_Patient">
+          <Key>
+            <PropertyRef Name="PatientId" />
+          </Key>
+          <Property Name="PatientId" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Suffix" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SocialSecurityNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ethnicity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaritalStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MRN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExternalPatientID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PatientStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="XIFIN_Accession" Relationship="Self.FK_XIFIN_Accession_XIFIN_Patient" FromRole="XIFIN_Patient" ToRole="XIFIN_Accession" />
+          <Property Name="isUpdated" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="XIFIN_PatientInsurance">
+          <Key>
+            <PropertyRef Name="CaseNo" />
+            <PropertyRef Name="Rank" />
+            <PropertyRef Name="InsuranceCode" />
+          </Key>
+          <Property Name="PatientId" Type="Int32" />
+          <Property Name="InsuranceId" Type="Int32" />
+          <Property Name="CaseNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InsuranceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Rank" Type="Int32" Nullable="false" />
+          <Property Name="HomePlan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PayorGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PlanType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubscriberFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubscriberLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubscriberMiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubscriberGender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubscriberSocialSecurityNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubscriberDateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="SubscriberAddress1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubscriberAddress2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubscriberAddress3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubscriberCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubscriberStateProvince" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubscriberCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubscriberPostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubscriberPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PatientRelation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PolicyNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GroupNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AuthorizationNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InsuranceCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StateProvince" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="XIFIN_Phone">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="Category" />
+            <PropertyRef Name="PhoneId" />
+            <PropertyRef Name="PhoneType" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Category" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PhoneId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Extension" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="XIFIN_Report">
+          <Key>
+            <PropertyRef Name="CaseNo" />
+            <PropertyRef Name="Version" />
+          </Key>
+          <Property Name="CaseNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="VersionTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SignedDate" Type="DateTime" Precision="3" />
+          <Property Name="SignedUserId" Type="Int32" />
+          <Property Name="SignedUserFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SignedUserLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReportTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReportTemplateId" Type="Int32" />
+          <Property Name="ReportTemplateName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DocumentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Document" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MyPRSRiskScore" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MyPRSRiskClassification" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PatientSubtype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReportComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="XIFIN_Result">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="TestOrderID" />
+            <PropertyRef Name="CaseNo" />
+            <PropertyRef Name="ComponentCode" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TestOrderID" Type="Int32" Nullable="false" />
+          <Property Name="CaseNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ComponentCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ComponentName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DataValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GateName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="GroupName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ComponentTypeName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="XIFIN_TestOrder" Relationship="Self.FK_XIFIN_Result_XIFIN_TestOrder" FromRole="XIFIN_Result" ToRole="XIFIN_TestOrder" />
+        </EntityType>
+        <EntityType Name="XIFIN_Specimen">
+          <Key>
+            <PropertyRef Name="SpecimenID" />
+            <PropertyRef Name="CaseNo" />
+          </Key>
+          <Property Name="SpecimenID" Type="Int32" Nullable="false" />
+          <Property Name="CaseNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ExternalSpecimenID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BodySiteName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SpecimenName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Volume" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CollectionDate" Type="DateTime" Precision="3" />
+          <Property Name="ReceivedDate" Type="DateTime" Precision="3" />
+          <Property Name="SpecimenTransportName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SpecimenTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="XIFIN_TestOrder">
+          <Key>
+            <PropertyRef Name="TestOrderID" />
+            <PropertyRef Name="CaseNo" />
+          </Key>
+          <Property Name="TestOrderID" Type="Int32" Nullable="false" />
+          <Property Name="CaseNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TestCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TestName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PanelName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TestTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="XIFIN_ICD9" Relationship="Self.FK_XIFIN_ICD9_XIFIN_TestOrder" FromRole="XIFIN_TestOrder" ToRole="XIFIN_ICD9" />
+          <NavigationProperty Name="XIFIN_Result" Relationship="Self.FK_XIFIN_Result_XIFIN_TestOrder" FromRole="XIFIN_TestOrder" ToRole="XIFIN_Result" />
+          <NavigationProperty Name="XIFIN_TestOrderSpecimen" Relationship="Self.FK_XIFIN_TestOrderSpecimen_XIFIN_TestOrder" FromRole="XIFIN_TestOrder" ToRole="XIFIN_TestOrderSpecimen" />
+          <NavigationProperty Name="XIFIN_ICD10" Relationship="XifinLISModel.FK_XIFIN_ICD10_XIFIN_TestOrder" FromRole="XIFIN_TestOrder" ToRole="XIFIN_ICD10" />
+        </EntityType>
+        <EntityType Name="XIFIN_TestOrderSpecimen">
+          <Key>
+            <PropertyRef Name="TestOrderID" />
+            <PropertyRef Name="CaseNo" />
+            <PropertyRef Name="SpecimenID" />
+            <PropertyRef Name="ExternalSpecimenID" />
+          </Key>
+          <Property Name="TestOrderID" Type="Int32" Nullable="false" />
+          <Property Name="CaseNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SpecimenID" Type="Int32" Nullable="false" />
+          <Property Name="ExternalSpecimenID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="XIFIN_TestOrder" Relationship="Self.FK_XIFIN_TestOrderSpecimen_XIFIN_TestOrder" FromRole="XIFIN_TestOrderSpecimen" ToRole="XIFIN_TestOrder" />
+        </EntityType>
+        <Association Name="FK_XIFIN_Accession_XIFIN_Client">
+          <End Role="XIFIN_Client" Type="Self.XIFIN_Client" Multiplicity="0..1" />
+          <End Role="XIFIN_Accession" Type="Self.XIFIN_Accession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XIFIN_Client">
+              <PropertyRef Name="ClientCode" />
+            </Principal>
+            <Dependent Role="XIFIN_Accession">
+              <PropertyRef Name="ClientCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_XIFIN_Accession_XIFIN_Doctor">
+          <End Role="XIFIN_Doctor" Type="Self.XIFIN_Doctor" Multiplicity="0..1" />
+          <End Role="XIFIN_Accession" Type="Self.XIFIN_Accession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XIFIN_Doctor">
+              <PropertyRef Name="DoctorId" />
+            </Principal>
+            <Dependent Role="XIFIN_Accession">
+              <PropertyRef Name="OrderingPhysician" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_XIFIN_Accession_XIFIN_Facility">
+          <End Role="XIFIN_Facility" Type="Self.XIFIN_Facility" Multiplicity="0..1" />
+          <End Role="XIFIN_Accession" Type="Self.XIFIN_Accession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XIFIN_Facility">
+              <PropertyRef Name="FacilityId" />
+            </Principal>
+            <Dependent Role="XIFIN_Accession">
+              <PropertyRef Name="FacilityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_XIFIN_Accession_XIFIN_Patient">
+          <End Role="XIFIN_Patient" Type="Self.XIFIN_Patient" Multiplicity="0..1" />
+          <End Role="XIFIN_Accession" Type="Self.XIFIN_Accession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XIFIN_Patient">
+              <PropertyRef Name="PatientId" />
+            </Principal>
+            <Dependent Role="XIFIN_Accession">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Case_Labs">
+          <End Role="XIFIN_Labs" Type="Self.XIFIN_Labs" Multiplicity="0..1" />
+          <End Role="XIFIN_Case" Type="Self.XIFIN_Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XIFIN_Labs">
+              <PropertyRef Name="LabId" />
+            </Principal>
+            <Dependent Role="XIFIN_Case">
+              <PropertyRef Name="LabID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_XIFIN_DoctorIdentification_XIFIN_Doctor">
+          <End Role="XIFIN_Doctor" Type="Self.XIFIN_Doctor" Multiplicity="1" />
+          <End Role="XIFIN_DoctorIdentification" Type="Self.XIFIN_DoctorIdentification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XIFIN_Doctor">
+              <PropertyRef Name="DoctorId" />
+            </Principal>
+            <Dependent Role="XIFIN_DoctorIdentification">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_XIFIN_ICD9_XIFIN_TestOrder">
+          <End Role="XIFIN_TestOrder" Type="Self.XIFIN_TestOrder" Multiplicity="1" />
+          <End Role="XIFIN_ICD9" Type="Self.XIFIN_ICD9" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XIFIN_TestOrder">
+              <PropertyRef Name="TestOrderID" />
+              <PropertyRef Name="CaseNo" />
+            </Principal>
+            <Dependent Role="XIFIN_ICD9">
+              <PropertyRef Name="TestOrderID" />
+              <PropertyRef Name="CaseNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_XIFIN_Result_XIFIN_TestOrder">
+          <End Role="XIFIN_TestOrder" Type="Self.XIFIN_TestOrder" Multiplicity="1" />
+          <End Role="XIFIN_Result" Type="Self.XIFIN_Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XIFIN_TestOrder">
+              <PropertyRef Name="TestOrderID" />
+              <PropertyRef Name="CaseNo" />
+            </Principal>
+            <Dependent Role="XIFIN_Result">
+              <PropertyRef Name="TestOrderID" />
+              <PropertyRef Name="CaseNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_XIFIN_TestOrderSpecimen_XIFIN_TestOrder">
+          <End Role="XIFIN_TestOrder" Type="Self.XIFIN_TestOrder" Multiplicity="1" />
+          <End Role="XIFIN_TestOrderSpecimen" Type="Self.XIFIN_TestOrderSpecimen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XIFIN_TestOrder">
+              <PropertyRef Name="TestOrderID" />
+              <PropertyRef Name="CaseNo" />
+            </Principal>
+            <Dependent Role="XIFIN_TestOrderSpecimen">
+              <PropertyRef Name="TestOrderID" />
+              <PropertyRef Name="CaseNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="XifinLISEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="XIFIN_Accession" EntityType="Self.XIFIN_Accession" />
+          <EntitySet Name="XIFIN_Address" EntityType="Self.XIFIN_Address" />
+          <EntitySet Name="XIFIN_Case" EntityType="Self.XIFIN_Case" />
+          <EntitySet Name="XIFIN_CaseInsurance" EntityType="Self.XIFIN_CaseInsurance" />
+          <EntitySet Name="XIFIN_Client" EntityType="Self.XIFIN_Client" />
+          <EntitySet Name="XIFIN_Doctor" EntityType="Self.XIFIN_Doctor" />
+          <EntitySet Name="XIFIN_DoctorIdentification" EntityType="Self.XIFIN_DoctorIdentification" />
+          <EntitySet Name="XIFIN_Facility" EntityType="Self.XIFIN_Facility" />
+          <EntitySet Name="XIFIN_ICD9" EntityType="Self.XIFIN_ICD9" />
+          <EntitySet Name="XIFIN_LabMessage" EntityType="Self.XIFIN_LabMessage" />
+          <EntitySet Name="XIFIN_Labs" EntityType="Self.XIFIN_Labs" />
+          <EntitySet Name="XIFIN_Patient" EntityType="Self.XIFIN_Patient" />
+          <EntitySet Name="XIFIN_PatientInsurance" EntityType="Self.XIFIN_PatientInsurance" />
+          <EntitySet Name="XIFIN_Phone" EntityType="Self.XIFIN_Phone" />
+          <EntitySet Name="XIFIN_Report" EntityType="Self.XIFIN_Report" />
+          <EntitySet Name="XIFIN_Result" EntityType="Self.XIFIN_Result" />
+          <EntitySet Name="XIFIN_Specimen" EntityType="Self.XIFIN_Specimen" />
+          <EntitySet Name="XIFIN_TestOrder" EntityType="Self.XIFIN_TestOrder" />
+          <EntitySet Name="XIFIN_TestOrderSpecimen" EntityType="Self.XIFIN_TestOrderSpecimen" />
+          <AssociationSet Name="FK_XIFIN_Accession_XIFIN_Client" Association="Self.FK_XIFIN_Accession_XIFIN_Client">
+            <End Role="XIFIN_Client" EntitySet="XIFIN_Client" />
+            <End Role="XIFIN_Accession" EntitySet="XIFIN_Accession" />
+          </AssociationSet>
+          <AssociationSet Name="FK_XIFIN_Accession_XIFIN_Doctor" Association="Self.FK_XIFIN_Accession_XIFIN_Doctor">
+            <End Role="XIFIN_Doctor" EntitySet="XIFIN_Doctor" />
+            <End Role="XIFIN_Accession" EntitySet="XIFIN_Accession" />
+          </AssociationSet>
+          <AssociationSet Name="FK_XIFIN_Accession_XIFIN_Facility" Association="Self.FK_XIFIN_Accession_XIFIN_Facility">
+            <End Role="XIFIN_Facility" EntitySet="XIFIN_Facility" />
+            <End Role="XIFIN_Accession" EntitySet="XIFIN_Accession" />
+          </AssociationSet>
+          <AssociationSet Name="FK_XIFIN_Accession_XIFIN_Patient" Association="Self.FK_XIFIN_Accession_XIFIN_Patient">
+            <End Role="XIFIN_Patient" EntitySet="XIFIN_Patient" />
+            <End Role="XIFIN_Accession" EntitySet="XIFIN_Accession" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Case_Labs" Association="Self.FK_Case_Labs">
+            <End Role="XIFIN_Labs" EntitySet="XIFIN_Labs" />
+            <End Role="XIFIN_Case" EntitySet="XIFIN_Case" />
+          </AssociationSet>
+          <AssociationSet Name="FK_XIFIN_DoctorIdentification_XIFIN_Doctor" Association="Self.FK_XIFIN_DoctorIdentification_XIFIN_Doctor">
+            <End Role="XIFIN_Doctor" EntitySet="XIFIN_Doctor" />
+            <End Role="XIFIN_DoctorIdentification" EntitySet="XIFIN_DoctorIdentification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_XIFIN_ICD9_XIFIN_TestOrder" Association="Self.FK_XIFIN_ICD9_XIFIN_TestOrder">
+            <End Role="XIFIN_TestOrder" EntitySet="XIFIN_TestOrder" />
+            <End Role="XIFIN_ICD9" EntitySet="XIFIN_ICD9" />
+          </AssociationSet>
+          <AssociationSet Name="FK_XIFIN_Result_XIFIN_TestOrder" Association="Self.FK_XIFIN_Result_XIFIN_TestOrder">
+            <End Role="XIFIN_TestOrder" EntitySet="XIFIN_TestOrder" />
+            <End Role="XIFIN_Result" EntitySet="XIFIN_Result" />
+          </AssociationSet>
+          <AssociationSet Name="FK_XIFIN_TestOrderSpecimen_XIFIN_TestOrder" Association="Self.FK_XIFIN_TestOrderSpecimen_XIFIN_TestOrder">
+            <End Role="XIFIN_TestOrder" EntitySet="XIFIN_TestOrder" />
+            <End Role="XIFIN_TestOrderSpecimen" EntitySet="XIFIN_TestOrderSpecimen" />
+          </AssociationSet>
+          <EntitySet Name="XIFIN_ICD10" EntityType="XifinLISModel.XIFIN_ICD10" />
+          <AssociationSet Name="FK_XIFIN_ICD10_XIFIN_TestOrder" Association="XifinLISModel.FK_XIFIN_ICD10_XIFIN_TestOrder">
+            <End Role="XIFIN_TestOrder" EntitySet="XIFIN_TestOrder" />
+            <End Role="XIFIN_ICD10" EntitySet="XIFIN_ICD10" />
+          </AssociationSet>
+          <EntitySet Name="XIFIN_LabMessage_Case" EntityType="XifinLISModel.XIFIN_LabMessage_Case" />
+          <AssociationSet Name="FK_XIFIN_LabMessage_Case_XIFIN_Accession" Association="XifinLISModel.FK_XIFIN_LabMessage_Case_XIFIN_Accession">
+            <End Role="XIFIN_Accession" EntitySet="XIFIN_Accession" />
+            <End Role="XIFIN_LabMessage_Case" EntitySet="XIFIN_LabMessage_Case" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="XIFIN_ICD10">
+          <Key>
+            <PropertyRef Name="TestOrderId" />
+            <PropertyRef Name="CaseNo" />
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="TestOrderId" Type="Int32" Nullable="false" />
+          <Property Name="CaseNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="XIFIN_TestOrder" Relationship="XifinLISModel.FK_XIFIN_ICD10_XIFIN_TestOrder" FromRole="XIFIN_ICD10" ToRole="XIFIN_TestOrder" />
+        </EntityType>
+        <Association Name="FK_XIFIN_ICD10_XIFIN_TestOrder">
+          <End Type="XifinLISModel.XIFIN_TestOrder" Role="XIFIN_TestOrder" Multiplicity="1" />
+          <End Type="XifinLISModel.XIFIN_ICD10" Role="XIFIN_ICD10" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XIFIN_TestOrder">
+              <PropertyRef Name="TestOrderID" />
+              <PropertyRef Name="CaseNo" />
+            </Principal>
+            <Dependent Role="XIFIN_ICD10">
+              <PropertyRef Name="TestOrderId" />
+              <PropertyRef Name="CaseNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="XIFIN_LabMessage_Case">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="AccessionId" Type="Int32" Nullable="false" />
+          <Property Name="CaseNumber" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiveUTCDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="XIFIN_Accession" Relationship="XifinLISModel.FK_XIFIN_LabMessage_Case_XIFIN_Accession" FromRole="XIFIN_LabMessage_Case" ToRole="XIFIN_Accession" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="EventType" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_XIFIN_LabMessage_Case_XIFIN_Accession">
+          <End Type="XifinLISModel.XIFIN_Accession" Role="XIFIN_Accession" Multiplicity="1" />
+          <End Type="XifinLISModel.XIFIN_LabMessage_Case" Role="XIFIN_LabMessage_Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XIFIN_Accession">
+              <PropertyRef Name="AccessionId" />
+            </Principal>
+            <Dependent Role="XIFIN_LabMessage_Case">
+              <PropertyRef Name="AccessionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="XifinLISModelStoreContainer" CdmEntityContainer="XifinLISEntities">
+          <EntitySetMapping Name="XIFIN_Accession">
+            <EntityTypeMapping TypeName="XifinLISModel.XIFIN_Accession">
+              <MappingFragment StoreEntitySet="XIFIN_Accession">
+                <ScalarProperty Name="Destination" ColumnName="Destination" />
+                <ScalarProperty Name="LastCompletedDate" ColumnName="LastCompletedDate" />
+                <ScalarProperty Name="LabId" ColumnName="LabId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LabMessageId" ColumnName="LabMessageId" />
+                <ScalarProperty Name="AccessionId" ColumnName="AccessionId" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="ExternalAccessionID" ColumnName="ExternalAccessionID" />
+                <ScalarProperty Name="BillTypeName" ColumnName="BillTypeName" />
+                <ScalarProperty Name="ReasonForReferral" ColumnName="ReasonForReferral" />
+                <ScalarProperty Name="ClinicalData" ColumnName="ClinicalData" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="CompletedDate" ColumnName="CompletedDate" />
+                <ScalarProperty Name="ClinicalHistory" ColumnName="ClinicalHistory" />
+                <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+                <ScalarProperty Name="FacilityId" ColumnName="FacilityId" />
+                <ScalarProperty Name="RequisitionNumber" ColumnName="RequisitionNumber" />
+                <ScalarProperty Name="OrderingPhysician" ColumnName="OrderingPhysician" />
+                <ScalarProperty Name="RenderingPhysician" ColumnName="RenderingPhysician" />
+                <ScalarProperty Name="Deficiencies" ColumnName="Deficiencies" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="XIFIN_Address">
+            <EntityTypeMapping TypeName="XifinLISModel.XIFIN_Address">
+              <MappingFragment StoreEntitySet="XIFIN_Address">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address3" ColumnName="Address3" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="StateProvince" ColumnName="StateProvince" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="XIFIN_Case">
+            <EntityTypeMapping TypeName="XifinLISModel.XIFIN_Case">
+              <MappingFragment StoreEntitySet="XIFIN_Case">
+                <ScalarProperty Name="LastCompletedDate" ColumnName="LastCompletedDate" />
+                <ScalarProperty Name="CompletedDate" ColumnName="CompletedDate" />
+                <ScalarProperty Name="Destination" ColumnName="Destination" />
+                <ScalarProperty Name="isUpdated" ColumnName="isUpdated" />
+                <ScalarProperty Name="isActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CaseNo" ColumnName="CaseNo" />
+                <ScalarProperty Name="AccessionId" ColumnName="AccessionId" />
+                <ScalarProperty Name="FacilityID" ColumnName="FacilityID" />
+                <ScalarProperty Name="LabID" ColumnName="LabID" />
+                <ScalarProperty Name="CaseTypeName" ColumnName="CaseTypeName" />
+                <ScalarProperty Name="ClientCaseNo" ColumnName="ClientCaseNo" />
+                <ScalarProperty Name="TreatingPhysician" ColumnName="TreatingPhysician" />
+                <ScalarProperty Name="CLIANumber" ColumnName="CLIANumber" />
+                <ScalarProperty Name="CLIAName" ColumnName="CLIAName" />
+                <ScalarProperty Name="CLIAAddress1" ColumnName="CLIAAddress1" />
+                <ScalarProperty Name="CLIAAddress2" ColumnName="CLIAAddress2" />
+                <ScalarProperty Name="CLIAAddress3" ColumnName="CLIAAddress3" />
+                <ScalarProperty Name="CLIACity" ColumnName="CLIACity" />
+                <ScalarProperty Name="CLIAStateProvince" ColumnName="CLIAStateProvince" />
+                <ScalarProperty Name="CLIACountry" ColumnName="CLIACountry" />
+                <ScalarProperty Name="CLIAPostalCode" ColumnName="CLIAPostalCode" />
+                <ScalarProperty Name="WorkflowStep" ColumnName="WorkflowStep" />
+                <ScalarProperty Name="QNSReason" ColumnName="QNSReason" />
+                <ScalarProperty Name="OriginalAccessionId" ColumnName="OriginalAccessionId" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="XIFIN_CaseInsurance">
+            <EntityTypeMapping TypeName="XifinLISModel.XIFIN_CaseInsurance">
+              <MappingFragment StoreEntitySet="XIFIN_CaseInsurance">
+                <ScalarProperty Name="InsuranceId" ColumnName="InsuranceId" />
+                <ScalarProperty Name="InsuranceCode" ColumnName="InsuranceCode" />
+                <ScalarProperty Name="CaseNo" ColumnName="CaseNo" />
+                <ScalarProperty Name="PayorId" ColumnName="PayorId" />
+                <ScalarProperty Name="PayorRank" ColumnName="PayorRank" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="XIFIN_Client">
+            <EntityTypeMapping TypeName="XifinLISModel.XIFIN_Client">
+              <MappingFragment StoreEntitySet="XIFIN_Client">
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="ExternalClientID" ColumnName="ExternalClientID" />
+                <ScalarProperty Name="AccountManager" ColumnName="AccountManager" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="XIFIN_Doctor">
+            <EntityTypeMapping TypeName="XifinLISModel.XIFIN_Doctor">
+              <MappingFragment StoreEntitySet="XIFIN_Doctor">
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="DoctorTypeName" ColumnName="DoctorTypeName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="XIFIN_DoctorIdentification">
+            <EntityTypeMapping TypeName="XifinLISModel.XIFIN_DoctorIdentification">
+              <MappingFragment StoreEntitySet="XIFIN_DoctorIdentification">
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="LicenseNumber" ColumnName="LicenseNumber" />
+                <ScalarProperty Name="DoctorIdentificationType" ColumnName="DoctorIdentificationType" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="XIFIN_Facility">
+            <EntityTypeMapping TypeName="XifinLISModel.XIFIN_Facility">
+              <MappingFragment StoreEntitySet="XIFIN_Facility">
+                <ScalarProperty Name="FacilityId" ColumnName="FacilityId" />
+                <ScalarProperty Name="FacilityName" ColumnName="FacilityName" />
+                <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="XIFIN_ICD9">
+            <EntityTypeMapping TypeName="XifinLISModel.XIFIN_ICD9">
+              <MappingFragment StoreEntitySet="XIFIN_ICD9">
+                <ScalarProperty Name="TestOrderID" ColumnName="TestOrderID" />
+                <ScalarProperty Name="CaseNo" ColumnName="CaseNo" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="XIFIN_LabMessage">
+            <EntityTypeMapping TypeName="XifinLISModel.XIFIN_LabMessage">
+              <MappingFragment StoreEntitySet="XIFIN_LabMessage">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="EventType" ColumnName="EventType" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="XIFIN_Labs">
+            <EntityTypeMapping TypeName="XifinLISModel.XIFIN_Labs">
+              <MappingFragment StoreEntitySet="XIFIN_Labs">
+                <ScalarProperty Name="LabId" ColumnName="LabId" />
+                <ScalarProperty Name="LabCode" ColumnName="LabCode" />
+                <ScalarProperty Name="LabName" ColumnName="LabName" />
+                <ScalarProperty Name="ClientLabID" ColumnName="ClientLabID" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="XIFIN_Patient">
+            <EntityTypeMapping TypeName="XifinLISModel.XIFIN_Patient">
+              <MappingFragment StoreEntitySet="XIFIN_Patient">
+                <ScalarProperty Name="isUpdated" ColumnName="isUpdated" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+                <ScalarProperty Name="SocialSecurityNo" ColumnName="SocialSecurityNo" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Ethnicity" ColumnName="Ethnicity" />
+                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+                <ScalarProperty Name="MRN" ColumnName="MRN" />
+                <ScalarProperty Name="ExternalPatientID" ColumnName="ExternalPatientID" />
+                <ScalarProperty Name="PatientStatus" ColumnName="PatientStatus" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="XIFIN_PatientInsurance">
+            <EntityTypeMapping TypeName="XifinLISModel.XIFIN_PatientInsurance">
+              <MappingFragment StoreEntitySet="XIFIN_PatientInsurance">
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="InsuranceId" ColumnName="InsuranceId" />
+                <ScalarProperty Name="CaseNo" ColumnName="CaseNo" />
+                <ScalarProperty Name="InsuranceName" ColumnName="InsuranceName" />
+                <ScalarProperty Name="Rank" ColumnName="Rank" />
+                <ScalarProperty Name="HomePlan" ColumnName="HomePlan" />
+                <ScalarProperty Name="PayorGroup" ColumnName="PayorGroup" />
+                <ScalarProperty Name="PlanType" ColumnName="PlanType" />
+                <ScalarProperty Name="SubscriberFirstName" ColumnName="SubscriberFirstName" />
+                <ScalarProperty Name="SubscriberLastName" ColumnName="SubscriberLastName" />
+                <ScalarProperty Name="SubscriberMiddleName" ColumnName="SubscriberMiddleName" />
+                <ScalarProperty Name="SubscriberGender" ColumnName="SubscriberGender" />
+                <ScalarProperty Name="SubscriberSocialSecurityNo" ColumnName="SubscriberSocialSecurityNo" />
+                <ScalarProperty Name="SubscriberDateOfBirth" ColumnName="SubscriberDateOfBirth" />
+                <ScalarProperty Name="SubscriberAddress1" ColumnName="SubscriberAddress1" />
+                <ScalarProperty Name="SubscriberAddress2" ColumnName="SubscriberAddress2" />
+                <ScalarProperty Name="SubscriberAddress3" ColumnName="SubscriberAddress3" />
+                <ScalarProperty Name="SubscriberCity" ColumnName="SubscriberCity" />
+                <ScalarProperty Name="SubscriberStateProvince" ColumnName="SubscriberStateProvince" />
+                <ScalarProperty Name="SubscriberCountry" ColumnName="SubscriberCountry" />
+                <ScalarProperty Name="SubscriberPostalCode" ColumnName="SubscriberPostalCode" />
+                <ScalarProperty Name="SubscriberPhoneNumber" ColumnName="SubscriberPhoneNumber" />
+                <ScalarProperty Name="PatientRelation" ColumnName="PatientRelation" />
+                <ScalarProperty Name="PolicyNo" ColumnName="PolicyNo" />
+                <ScalarProperty Name="GroupNo" ColumnName="GroupNo" />
+                <ScalarProperty Name="AuthorizationNo" ColumnName="AuthorizationNo" />
+                <ScalarProperty Name="InsuranceCode" ColumnName="InsuranceCode" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="StateProvince" ColumnName="StateProvince" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="XIFIN_Phone">
+            <EntityTypeMapping TypeName="XifinLISModel.XIFIN_Phone">
+              <MappingFragment StoreEntitySet="XIFIN_Phone">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="PhoneId" ColumnName="PhoneId" />
+                <ScalarProperty Name="PhoneType" ColumnName="PhoneType" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="XIFIN_Report">
+            <EntityTypeMapping TypeName="XifinLISModel.XIFIN_Report">
+              <MappingFragment StoreEntitySet="XIFIN_Report">
+                <ScalarProperty Name="ReportComment" ColumnName="ReportComment" />
+                <ScalarProperty Name="PatientSubtype" ColumnName="PatientSubtype" />
+                <ScalarProperty Name="MyPRSRiskClassification" ColumnName="MyPRSRiskClassification" />
+                <ScalarProperty Name="MyPRSRiskScore" ColumnName="MyPRSRiskScore" />
+                <ScalarProperty Name="CaseNo" ColumnName="CaseNo" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="VersionTypeName" ColumnName="VersionTypeName" />
+                <ScalarProperty Name="SignedDate" ColumnName="SignedDate" />
+                <ScalarProperty Name="SignedUserId" ColumnName="SignedUserId" />
+                <ScalarProperty Name="SignedUserFirstName" ColumnName="SignedUserFirstName" />
+                <ScalarProperty Name="SignedUserLastName" ColumnName="SignedUserLastName" />
+                <ScalarProperty Name="ReportTypeName" ColumnName="ReportTypeName" />
+                <ScalarProperty Name="ReportTemplateId" ColumnName="ReportTemplateId" />
+                <ScalarProperty Name="ReportTemplateName" ColumnName="ReportTemplateName" />
+                <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
+                <ScalarProperty Name="Document" ColumnName="Document" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="XIFIN_Result">
+            <EntityTypeMapping TypeName="XifinLISModel.XIFIN_Result">
+              <MappingFragment StoreEntitySet="XIFIN_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="TestOrderID" ColumnName="TestOrderID" />
+                <ScalarProperty Name="CaseNo" ColumnName="CaseNo" />
+                <ScalarProperty Name="ComponentCode" ColumnName="ComponentCode" />
+                <ScalarProperty Name="ComponentName" ColumnName="ComponentName" />
+                <ScalarProperty Name="DataValue" ColumnName="DataValue" />
+                <ScalarProperty Name="GateName" ColumnName="GateName" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="ComponentTypeName" ColumnName="ComponentTypeName" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="XIFIN_Specimen">
+            <EntityTypeMapping TypeName="XifinLISModel.XIFIN_Specimen">
+              <MappingFragment StoreEntitySet="XIFIN_Specimen">
+                <ScalarProperty Name="SpecimenID" ColumnName="SpecimenID" />
+                <ScalarProperty Name="CaseNo" ColumnName="CaseNo" />
+                <ScalarProperty Name="ExternalSpecimenID" ColumnName="ExternalSpecimenID" />
+                <ScalarProperty Name="BodySiteName" ColumnName="BodySiteName" />
+                <ScalarProperty Name="SpecimenName" ColumnName="SpecimenName" />
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+                <ScalarProperty Name="CollectionDate" ColumnName="CollectionDate" />
+                <ScalarProperty Name="ReceivedDate" ColumnName="ReceivedDate" />
+                <ScalarProperty Name="SpecimenTransportName" ColumnName="SpecimenTransportName" />
+                <ScalarProperty Name="SpecimenTypeName" ColumnName="SpecimenTypeName" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="XIFIN_TestOrder">
+            <EntityTypeMapping TypeName="XifinLISModel.XIFIN_TestOrder">
+              <MappingFragment StoreEntitySet="XIFIN_TestOrder">
+                <ScalarProperty Name="TestOrderID" ColumnName="TestOrderID" />
+                <ScalarProperty Name="CaseNo" ColumnName="CaseNo" />
+                <ScalarProperty Name="TestCode" ColumnName="TestCode" />
+                <ScalarProperty Name="TestName" ColumnName="TestName" />
+                <ScalarProperty Name="PanelName" ColumnName="PanelName" />
+                <ScalarProperty Name="TestTypeName" ColumnName="TestTypeName" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="XIFIN_TestOrderSpecimen">
+            <EntityTypeMapping TypeName="XifinLISModel.XIFIN_TestOrderSpecimen">
+              <MappingFragment StoreEntitySet="XIFIN_TestOrderSpecimen">
+                <ScalarProperty Name="TestOrderID" ColumnName="TestOrderID" />
+                <ScalarProperty Name="CaseNo" ColumnName="CaseNo" />
+                <ScalarProperty Name="SpecimenID" ColumnName="SpecimenID" />
+                <ScalarProperty Name="ExternalSpecimenID" ColumnName="ExternalSpecimenID" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="XIFIN_ICD10">
+            <EntityTypeMapping TypeName="XifinLISModel.XIFIN_ICD10">
+              <MappingFragment StoreEntitySet="XIFIN_ICD10">
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="CaseNo" ColumnName="CaseNo" />
+                <ScalarProperty Name="TestOrderId" ColumnName="TestOrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="XIFIN_LabMessage_Case">
+            <EntityTypeMapping TypeName="XifinLISModel.XIFIN_LabMessage_Case">
+              <MappingFragment StoreEntitySet="XIFIN_LabMessage_Case">
+                <ScalarProperty Name="EventType" ColumnName="EventType" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ReceiveUTCDate" ColumnName="ReceiveUTCDate" />
+                <ScalarProperty Name="CaseNumber" ColumnName="CaseNumber" />
+                <ScalarProperty Name="AccessionId" ColumnName="AccessionId" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

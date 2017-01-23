@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CommonTools
+namespace CommonUtils.AppConfiguration
 {
-    public class Class1
+    public interface IAppConfigurationProvider
     {
+        object GetValue(string key);
     }
 }

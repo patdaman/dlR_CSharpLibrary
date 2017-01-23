@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a63dafa730154d4ca6686221176f79f9" Name="Diagram1" ZoomLevel="85">
+        <EntityTypeShape EntityType="SGNL_LISModel.Accession" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SGNL_LISModel.Client" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SGNL_LISModel.Doctor" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SGNL_LISModel.Facility" Width="1.5" PointX="0.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SGNL_LISModel.Lab" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SGNL_LISModel.Patient" Width="1.5" PointX="0.75" PointY="18.625" IsExpanded="true" />
+        <AssociationConnector Association="SGNL_LISModel.FK_Accession_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="SGNL_LISModel.FK_Accession_Doctor" ManuallyRouted="false" />
+        <AssociationConnector Association="SGNL_LISModel.FK_Accession_Doctor1" ManuallyRouted="false" />
+        <AssociationConnector Association="SGNL_LISModel.FK_Accession_Facility" ManuallyRouted="false" />
+        <AssociationConnector Association="SGNL_LISModel.FK_Accession_Patient" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SGNL_LISModel.vi_DoctorClient" Width="1.5" PointX="6" PointY="8.625" />
+        <AssociationConnector Association="SGNL_LISModel.FK_DoctorClient0_ClientID" />
+        <AssociationConnector Association="SGNL_LISModel.FK_DoctorClient0_DoctorId" />
+        <EntityTypeShape EntityType="SGNL_LISModel.vi_DoctorClientList" Width="1.5" PointX="3" PointY="17.75" />
+        <AssociationConnector Association="SGNL_LISModel.FK_DoctorClientList_DoctorId" />
+        <EntityTypeShape EntityType="SGNL_LISModel.Note" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SGNL_LISModel.Payor" Width="1.5" PointX="7.375" PointY="4" />
+        <EntityTypeShape EntityType="SGNL_LISModel.CaseErrorReport" Width="1.5" PointX="7.375" PointY="8.75" />
+        <EntityTypeShape EntityType="SGNL_LISModel.PatientInsurance" Width="1.5" PointX="7.5" PointY="11.625" />
+        <EntityTypeShape EntityType="SGNL_LISModel.LisCase" Width="1.5" PointX="9.625" PointY="1.5" />
+        <AssociationConnector Association="SGNL_LISModel.FK_LisCase_Accession" />
+        <AssociationConnector Association="SGNL_LISModel.FK_LisCase_Payor1" />
+        <AssociationConnector Association="SGNL_LISModel.FK_LisCase_Payor2" />
+        <AssociationConnector Association="SGNL_LISModel.FK_PatientInsurance_LisCase" />
+        <EntityTypeShape EntityType="SGNL_LISModel.enum_PlaceOfService" Width="1.5" PointX="5.125" PointY="13.125" />
+        <AssociationConnector Association="SGNL_LISModel.FK_Payor_PlaceOfService" />
+        <EntityTypeShape EntityType="SGNL_LISModel.CELHeaderInfo" Width="1.5" PointX="10.375" PointY="9.75" />
+        <EntityTypeShape EntityType="SGNL_LISModel.vi_ClientDoctor" Width="1.5" PointX="12.375" PointY="8.75" />
+        <EntityTypeShape EntityType="SGNL_LISModel.Report" Width="1.5" PointX="12.375" PointY="11.75" />
+        <EntityTypeShape EntityType="SGNL_LISModel.vi_apiGetBillingCases" Width="1.5" PointX="17.25" PointY="0.5" />
+        <EntityTypeShape EntityType="SGNL_LISModel.vi_GetAnalyticsCasePatientInfo" Width="1.5" PointX="14.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

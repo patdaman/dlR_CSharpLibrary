@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7a44421a613c48009006fea72b3177cf" Name="Diagram1">
+        <EntityTypeShape EntityType="XifinLISModel.XIFIN_Accession" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="XifinLISModel.XIFIN_Address" Width="1.5" PointX="10.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XifinLISModel.XIFIN_Case" Width="1.5" PointX="13" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XifinLISModel.XIFIN_CaseInsurance" Width="1.5" PointX="5.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XifinLISModel.XIFIN_Client" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="XifinLISModel.XIFIN_Doctor" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="XifinLISModel.XIFIN_DoctorIdentification" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="XifinLISModel.XIFIN_Facility" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XifinLISModel.XIFIN_ICD9" Width="1.5" PointX="8" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="XifinLISModel.XIFIN_LabMessage" Width="1.5" PointX="7.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XifinLISModel.XIFIN_Labs" Width="1.5" PointX="10.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="XifinLISModel.XIFIN_Patient" Width="1.5" PointX="0.75" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="XifinLISModel.XIFIN_PatientInsurance" Width="1.5" PointX="9.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XifinLISModel.XIFIN_Phone" Width="1.5" PointX="11.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XifinLISModel.XIFIN_Report" Width="1.5" PointX="2.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XifinLISModel.XIFIN_Result" Width="1.5" PointX="8" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="XifinLISModel.XIFIN_Specimen" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="XifinLISModel.XIFIN_TestOrder" Width="1.5" PointX="5.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="XifinLISModel.XIFIN_TestOrderSpecimen" Width="1.5" PointX="8" PointY="8.125" IsExpanded="true" />
+        <AssociationConnector Association="XifinLISModel.FK_XIFIN_Accession_XIFIN_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="XifinLISModel.FK_XIFIN_Accession_XIFIN_Doctor" ManuallyRouted="false" />
+        <AssociationConnector Association="XifinLISModel.FK_XIFIN_Accession_XIFIN_Facility" ManuallyRouted="false" />
+        <AssociationConnector Association="XifinLISModel.FK_XIFIN_Accession_XIFIN_Patient" ManuallyRouted="false" />
+        <AssociationConnector Association="XifinLISModel.FK_Case_Labs" ManuallyRouted="false" />
+        <AssociationConnector Association="XifinLISModel.FK_XIFIN_DoctorIdentification_XIFIN_Doctor" ManuallyRouted="false" />
+        <AssociationConnector Association="XifinLISModel.FK_XIFIN_ICD9_XIFIN_TestOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="XifinLISModel.FK_XIFIN_Result_XIFIN_TestOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="XifinLISModel.FK_XIFIN_TestOrderSpecimen_XIFIN_TestOrder" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="XifinLISModel.XIFIN_ICD10" Width="1.5" PointX="8" PointY="20.75" />
+        <AssociationConnector Association="XifinLISModel.FK_XIFIN_ICD10_XIFIN_TestOrder" />
+        <EntityTypeShape EntityType="XifinLISModel.XIFIN_LabMessage_Case" Width="1.5" PointX="5.25" PointY="8.625" />
+        <AssociationConnector Association="XifinLISModel.FK_XIFIN_LabMessage_Case_XIFIN_Accession" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

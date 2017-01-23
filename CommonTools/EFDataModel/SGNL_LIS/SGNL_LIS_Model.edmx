@@ -1,0 +1,1840 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SGNL_LISModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accession">
+          <Key>
+            <PropertyRef Name="AccessionId" />
+          </Key>
+          <Property Name="AccessionId" Type="int" Nullable="false" />
+          <Property Name="PatientId" Type="int" />
+          <Property Name="BillTypeName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ReasonForReferral" Type="nvarchar" MaxLength="500" />
+          <Property Name="ClinicalData" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="OrderDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="CompletedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="LastCompletedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ClinicalHistory" Type="nvarchar(max)" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="FacilityId" Type="int" />
+          <Property Name="LabId" Type="int" />
+          <Property Name="RequisitionNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrderingPhysician" Type="int" />
+          <Property Name="RenderingPhysician" Type="int" />
+          <Property Name="Deficiencies" Type="nvarchar" MaxLength="500" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" Nullable="false" />
+          <Property Name="LastModifiedUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FlagForReview" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CaseErrorReport">
+          <Key>
+            <PropertyRef Name="CaseNumber" />
+          </Key>
+          <Property Name="CaseNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ErrorType" Type="nvarchar" MaxLength="200" />
+          <Property Name="ErrorMessage" Type="nvarchar(max)" />
+          <Property Name="LastUpdatedDate" Type="datetime2" Precision="3" />
+        </EntityType>
+        <EntityType Name="CELHeaderInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CaseNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CaseNumberQualifier" Type="varchar" MaxLength="50" />
+          <Property Name="ScanDate" Type="varchar" MaxLength="50" />
+          <Property Name="ParseDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="FileTypeIdentifier" Type="varchar" MaxLength="150" />
+          <Property Name="AlgorithmName" Type="varchar" MaxLength="150" />
+          <Property Name="ArrayType" Type="varchar" MaxLength="150" />
+          <Property Name="ScannerId" Type="varchar" MaxLength="150" />
+          <Property Name="FluidicsStationID" Type="varchar" MaxLength="150" />
+          <Property Name="FluidicsModuleID" Type="varchar" MaxLength="150" />
+          <Property Name="FileIdentifier" Type="varchar" MaxLength="150" />
+          <Property Name="ScannerOperator" Type="varchar" MaxLength="150" />
+          <Property Name="FileCreator" Type="varchar" MaxLength="150" />
+          <Property Name="UploaderID" Type="varchar" MaxLength="50" />
+          <Property Name="UploaderWorkEnvironment" Type="varchar" MaxLength="150" />
+          <Property Name="OriginalCELFilePath" Type="varchar" MaxLength="255" />
+          <Property Name="CELFilename" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="ResultsCreationDate" Type="datetime" />
+          <Property Name="ArrayBarCode" Type="varchar" MaxLength="150" />
+          <Property Name="QCCreationDate" Type="datetime" />
+          <Property Name="StudyId" Type="int" />
+          <Property Name="CELFileCreationDate" Type="datetime" />
+          <Property Name="CELFileModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="ClientCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="AccountType" Type="nvarchar" MaxLength="255" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="255" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="255" />
+          <Property Name="Address3" Type="nvarchar" MaxLength="255" />
+          <Property Name="City" Type="nvarchar" MaxLength="255" />
+          <Property Name="State" Type="nvarchar" MaxLength="255" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Fax" Type="varchar" MaxLength="50" />
+          <Property Name="CurrentEffectiveDate" Type="datetime2" Precision="0" />
+          <Property Name="FacilityId" Type="int" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" Nullable="false" />
+          <Property Name="LastModifiedUser" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FlagForReview" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="DoctorId" />
+          </Key>
+          <Property Name="DoctorId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Suffix" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="NPI" Type="nvarchar" MaxLength="255" />
+          <Property Name="DoctorTypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="LastModifiedUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" Nullable="false" />
+          <Property Name="FlagForReview" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="enum_PlaceOfService">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Item" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Facility">
+          <Key>
+            <PropertyRef Name="FacilityId" />
+          </Key>
+          <Property Name="FacilityId" Type="int" Nullable="false" />
+          <Property Name="FacilityName" Type="nvarchar" MaxLength="128" />
+          <Property Name="FacilityState" Type="nvarchar" MaxLength="32" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" Nullable="false" />
+          <Property Name="LastModifiedUser" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FlagForReview" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Lab">
+          <Key>
+            <PropertyRef Name="LabId" />
+          </Key>
+          <Property Name="LabId" Type="int" Nullable="false" />
+          <Property Name="LabCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="LabName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientLabId" Type="varchar" MaxLength="10" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" Nullable="false" />
+          <Property Name="LastModifiedUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FlagForReview" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LisCase">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccessionId" Type="int" Nullable="false" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
+          <Property Name="isRescan" Type="bit" StoreGeneratedPattern="Computed" />
+          <Property Name="RescanCaseNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="CaseNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateofService" Type="date" />
+          <Property Name="ICD9Codes" Type="nvarchar" MaxLength="450" />
+          <Property Name="ICD10Codes" Type="nvarchar" MaxLength="450" />
+          <Property Name="CompletedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="LastCompletedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="LabId" Type="int" />
+          <Property Name="PRS" Type="nvarchar" MaxLength="50" />
+          <Property Name="PayorId1" Type="int" Nullable="false" />
+          <Property Name="PayorId2" Type="int" Nullable="false" />
+          <Property Name="QNS" Type="varchar" MaxLength="20" />
+          <Property Name="QNSReason" Type="nvarchar" MaxLength="1000" />
+          <Property Name="RepeatCount" Type="int" />
+          <Property Name="SubGroupDesignation" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" Nullable="false" />
+          <Property Name="LastModifiedUser" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FlagForReview" Type="tinyint" Nullable="false" />
+          <Property Name="LastCaseEdit" Type="datetimeoffset" Precision="0" Nullable="false" />
+          <Property Name="LastCaseEditUser" Type="varchar" MaxLength="50" />
+          <Property Name="DiagnosisCode" Type="nvarchar" MaxLength="450" StoreGeneratedPattern="Computed" />
+          <Property Name="ComputedICD10Codes" Type="nvarchar(max)" StoreGeneratedPattern="Computed" />
+          <Property Name="ICD10Source" Type="varchar" MaxLength="5" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="WorkflowStep" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Notes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NoteId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Note" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NoteType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="PatientId" />
+          </Key>
+          <Property Name="PatientId" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Suffix" Type="nvarchar" MaxLength="50" />
+          <Property Name="SocialSecurityNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="PrimaryPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="100" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="StateProvince" Type="nvarchar" MaxLength="50" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailAddress" Type="nvarchar(max)" />
+          <Property Name="Ethnicity" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaritalStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="MRN" Type="nvarchar" MaxLength="50" />
+          <Property Name="ExternalPatientID" Type="nvarchar" MaxLength="50" />
+          <Property Name="PatientStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" Nullable="false" />
+          <Property Name="LastModifiedUser" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FlagForReview" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PatientInsurance">
+          <Key>
+            <PropertyRef Name="CaseId" />
+            <PropertyRef Name="Rank" />
+          </Key>
+          <Property Name="CaseId" Type="int" Nullable="false" />
+          <Property Name="CaseNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Rank" Type="int" Nullable="false" />
+          <Property Name="InsuredRelationship" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubscriberFirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubscriberLastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubscriberMiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubscriberGender" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubscriberDateOfBirth" Type="date" />
+          <Property Name="SubscriberAddress1" Type="nvarchar" MaxLength="250" />
+          <Property Name="SubscriberAddress2" Type="nvarchar" MaxLength="250" />
+          <Property Name="SubscriberCity" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubscriberStateProvince" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubscriberCountry" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubscriberPostalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubscriberPhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="HomePlan" Type="nvarchar" MaxLength="50" />
+          <Property Name="PlanType" Type="nvarchar" MaxLength="50" />
+          <Property Name="PolicyNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="GroupNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="AuthorizationNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="PayorNetwork1" Type="nvarchar" MaxLength="50" />
+          <Property Name="PayorNetwork2" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="LastModifiedUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PayorCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PayorName" Type="nvarchar" MaxLength="255" />
+          <Property Name="ContactPhone" Type="nvarchar" MaxLength="255" />
+          <Property Name="ContactAddr1" Type="nvarchar" MaxLength="255" />
+          <Property Name="ContactAddr2" Type="nvarchar" MaxLength="255" />
+          <Property Name="ContactCity" Type="nvarchar" MaxLength="255" />
+          <Property Name="ContactState" Type="nvarchar" MaxLength="255" />
+          <Property Name="ContactZipCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" />
+          <Property Name="LastModifiedUser" Type="varchar" MaxLength="50" />
+          <Property Name="FlagForReview" Type="tinyint" />
+          <Property Name="PlaceOfService" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reports">
+          <Key>
+            <PropertyRef Name="CaseNumber" />
+            <PropertyRef Name="Version" />
+          </Key>
+          <Property Name="CaseNumber" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="VersionTypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SignedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="SignedUserId" Type="int" />
+          <Property Name="SignedUserFirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SignedUserLastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReportTypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReportTemplateId" Type="int" />
+          <Property Name="ReportTemplateName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DocumentName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MyPRSRiskScore" Type="nvarchar" MaxLength="50" />
+          <Property Name="MyPRSRiskClassification" Type="nvarchar" MaxLength="50" />
+          <Property Name="PatientSubtype" Type="nvarchar" MaxLength="50" />
+          <Property Name="Document" Type="varbinary(max)" />
+          <Property Name="LastModifiedDate" Type="datetime2" Precision="3" />
+          <Property Name="LastModifiedUser" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SGNL_LIS.dbo.vi_apiGetBillingCases' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vi_apiGetBillingCases">
+          <Key>
+            <PropertyRef Name="CaseNumber" />
+            <PropertyRef Name="ICD10Source" />
+            <PropertyRef Name="IsActive" />
+          </Key>
+          <Property Name="Billable" Type="bit" />
+          <Property Name="BillingTestType" Type="nvarchar(max)" />
+          <Property Name="Cancelled" Type="nvarchar(max)" />
+          <Property Name="CancelledReason" Type="nvarchar(max)" />
+          <Property Name="BillType" Type="nvarchar" MaxLength="100" />
+          <Property Name="CaseNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="ClientName" Type="nvarchar" MaxLength="255" />
+          <Property Name="CompletedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="CreatedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="DateofService" Type="date" />
+          <Property Name="Deficiencies" Type="nvarchar" MaxLength="500" />
+          <Property Name="FacilityId" Type="int" />
+          <Property Name="FacilityName" Type="nvarchar" MaxLength="128" />
+          <Property Name="ICD9Codes" Type="nvarchar" MaxLength="450" />
+          <Property Name="ICD10Codes" Type="nvarchar" MaxLength="450" />
+          <Property Name="ComputedICD10Codes" Type="nvarchar(max)" />
+          <Property Name="ICD10Source" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="IsComplete" Type="bit" />
+          <Property Name="InsuranceCompanyName1" Type="nvarchar" MaxLength="255" />
+          <Property Name="InsuranceCompanyName2" Type="nvarchar" MaxLength="255" />
+          <Property Name="MRN" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrderedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="OrderingPhysician" Type="nvarchar" MaxLength="101" />
+          <Property Name="OrderingPhysicianNpi" Type="nvarchar" MaxLength="255" />
+          <Property Name="PatientFirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PatientId" Type="int" />
+          <Property Name="PatientLastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PatientMiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PatientSex" Type="nvarchar" MaxLength="50" />
+          <Property Name="PatientStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="PatientAddress1" Type="nvarchar" MaxLength="100" />
+          <Property Name="PatientAddress2" Type="nvarchar" MaxLength="100" />
+          <Property Name="PatientCity" Type="nvarchar" MaxLength="50" />
+          <Property Name="PatientState" Type="nvarchar" MaxLength="50" />
+          <Property Name="PatientPostalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="PayorCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="PlaceOfService" Type="nvarchar" MaxLength="50" />
+          <Property Name="PayorCode2" Type="nvarchar" MaxLength="50" />
+          <Property Name="PlaceOfService2" Type="nvarchar" MaxLength="50" />
+          <Property Name="PayorID" Type="int" />
+          <Property Name="PayorID2" Type="int" />
+          <Property Name="QNS" Type="varchar" MaxLength="20" />
+          <Property Name="QNSReason" Type="nvarchar" MaxLength="1000" />
+          <Property Name="RepeatCount" Type="int" />
+          <Property Name="SpecimenType" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SGNL_LIS.dbo.vi_ClientDoctor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vi_ClientDoctor">
+          <Key>
+            <PropertyRef Name="DoctorId" />
+          </Key>
+          <Property Name="DoctorId" Type="int" Nullable="false" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="ClientName" Type="nvarchar" MaxLength="255" />
+          <Property Name="PhysicianFirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhysicianLastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="NPI" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SGNL_LIS.dbo.vi_DoctorClientList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vi_DoctorClientList">
+          <Key>
+            <PropertyRef Name="DoctorId" />
+          </Key>
+          <Property Name="DoctorId" Type="int" Nullable="false" />
+          <Property Name="Client" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SGNL_LIS.dbo.vi_GetAnalyticsCasePatientInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vi_GetAnalyticsCasePatientInfo">
+          <Key>
+            <PropertyRef Name="CaseNumber" />
+          </Key>
+          <Property Name="CaseNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateofService" Type="date" />
+          <Property Name="ExternalPatientID" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Suffix" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="MRN" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientName" Type="nvarchar" MaxLength="255" />
+          <Property Name="ClientCode" Type="varchar" MaxLength="50" />
+          <Property Name="FacilityName" Type="nvarchar" MaxLength="128" />
+          <Property Name="OrderingPhysicianLastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrderingPhysicianFirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="255" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="255" />
+          <Property Name="Address3" Type="nvarchar" MaxLength="255" />
+          <Property Name="City" Type="nvarchar" MaxLength="255" />
+          <Property Name="State" Type="nvarchar" MaxLength="255" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Fax" Type="varchar" MaxLength="50" />
+          <Property Name="SpecimenTypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CollectedDate" Type="datetime" />
+          <Property Name="ReceivedDate" Type="datetime" />
+          <Property Name="AccessionId" Type="int" />
+          <Property Name="PreSortFlowCD38+%" Type="varchar(max)" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="4000" />
+          <Property Name="CD138PurityPass" Type="bit" />
+          <Property Name="RNAPurityIntegrityPass" Type="bit" />
+          <Property Name="QNSComments" Type="varchar(max)" />
+          <Property Name="OrderDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="CompletedDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="SocialSecurityNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="PatientAddress1" Type="nvarchar" MaxLength="100" />
+          <Property Name="PatientAddress2" Type="nvarchar" MaxLength="100" />
+          <Property Name="PatientCity" Type="nvarchar" MaxLength="50" />
+          <Property Name="PatientState" Type="nvarchar" MaxLength="50" />
+          <Property Name="PatientPostalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="QNS" Type="varchar" MaxLength="20" />
+          <Property Name="ComputedICD10Codes" Type="nvarchar(max)" />
+          <Property Name="IsCancelled" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Accession_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Accession" Type="Self.Accession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Accession">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accession_Doctor">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+          <End Role="Accession" Type="Self.Accession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="DoctorId" />
+            </Principal>
+            <Dependent Role="Accession">
+              <PropertyRef Name="OrderingPhysician" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accession_Doctor1">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+          <End Role="Accession" Type="Self.Accession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="DoctorId" />
+            </Principal>
+            <Dependent Role="Accession">
+              <PropertyRef Name="RenderingPhysician" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accession_Facility">
+          <End Role="Facility" Type="Self.Facility" Multiplicity="0..1" />
+          <End Role="Accession" Type="Self.Accession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facility">
+              <PropertyRef Name="FacilityId" />
+            </Principal>
+            <Dependent Role="Accession">
+              <PropertyRef Name="FacilityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accession_Patient">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="Accession" Type="Self.Accession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="PatientId" />
+            </Principal>
+            <Dependent Role="Accession">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LisCase_Accession">
+          <End Role="Accession" Type="Self.Accession" Multiplicity="1" />
+          <End Role="LisCase" Type="Self.LisCase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accession">
+              <PropertyRef Name="AccessionId" />
+            </Principal>
+            <Dependent Role="LisCase">
+              <PropertyRef Name="AccessionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LisCase_Payor1">
+          <End Role="Payor" Type="Self.Payor" Multiplicity="1" />
+          <End Role="LisCase" Type="Self.LisCase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LisCase">
+              <PropertyRef Name="PayorId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LisCase_Payor2">
+          <End Role="Payor" Type="Self.Payor" Multiplicity="1" />
+          <End Role="LisCase" Type="Self.LisCase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LisCase">
+              <PropertyRef Name="PayorId2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientInsurance_LisCase">
+          <End Role="LisCase" Type="Self.LisCase" Multiplicity="1" />
+          <End Role="PatientInsurance" Type="Self.PatientInsurance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LisCase">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PatientInsurance">
+              <PropertyRef Name="CaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payor_PlaceOfService">
+          <End Role="enum_PlaceOfService" Type="Self.enum_PlaceOfService" Multiplicity="1" />
+          <End Role="Payor" Type="Self.Payor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="enum_PlaceOfService">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Payor">
+              <PropertyRef Name="PlaceOfService" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="usp_UpdateLisWarehouse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CaseNumber" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_UpdateMessageImportLog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CaseNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="ExecutableName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ExecutableVersion" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <EntityContainer Name="SGNL_LISModelStoreContainer">
+          <EntitySet Name="Accession" EntityType="Self.Accession" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CaseErrorReport" EntityType="Self.CaseErrorReport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CELHeaderInfo" EntityType="Self.CELHeaderInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="enum_PlaceOfService" EntityType="Self.enum_PlaceOfService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facility" EntityType="Self.Facility" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lab" EntityType="Self.Lab" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LisCase" EntityType="Self.LisCase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PatientInsurance" EntityType="Self.PatientInsurance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payor" EntityType="Self.Payor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reports" EntityType="Self.Reports" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vi_apiGetBillingCases" EntityType="Self.vi_apiGetBillingCases" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vi_apiGetBillingCases].[Billable] AS [Billable], 
+    [vi_apiGetBillingCases].[BillingTestType] AS [BillingTestType], 
+    [vi_apiGetBillingCases].[Cancelled] AS [Cancelled], 
+    [vi_apiGetBillingCases].[CancelledReason] AS [CancelledReason], 
+    [vi_apiGetBillingCases].[BillType] AS [BillType], 
+    [vi_apiGetBillingCases].[CaseNumber] AS [CaseNumber], 
+    [vi_apiGetBillingCases].[ClientId] AS [ClientId], 
+    [vi_apiGetBillingCases].[ClientName] AS [ClientName], 
+    [vi_apiGetBillingCases].[CompletedDate] AS [CompletedDate], 
+    [vi_apiGetBillingCases].[CreatedDate] AS [CreatedDate], 
+    [vi_apiGetBillingCases].[DateofService] AS [DateofService], 
+    [vi_apiGetBillingCases].[Deficiencies] AS [Deficiencies], 
+    [vi_apiGetBillingCases].[FacilityId] AS [FacilityId], 
+    [vi_apiGetBillingCases].[FacilityName] AS [FacilityName], 
+    [vi_apiGetBillingCases].[ICD9Codes] AS [ICD9Codes], 
+    [vi_apiGetBillingCases].[ICD10Codes] AS [ICD10Codes], 
+    [vi_apiGetBillingCases].[ComputedICD10Codes] AS [ComputedICD10Codes], 
+    [vi_apiGetBillingCases].[ICD10Source] AS [ICD10Source], 
+    [vi_apiGetBillingCases].[IsComplete] AS [IsComplete], 
+    [vi_apiGetBillingCases].[InsuranceCompanyName1] AS [InsuranceCompanyName1], 
+    [vi_apiGetBillingCases].[InsuranceCompanyName2] AS [InsuranceCompanyName2], 
+    [vi_apiGetBillingCases].[MRN] AS [MRN], 
+    [vi_apiGetBillingCases].[OrderedDate] AS [OrderedDate], 
+    [vi_apiGetBillingCases].[OrderingPhysician] AS [OrderingPhysician], 
+    [vi_apiGetBillingCases].[OrderingPhysicianNpi] AS [OrderingPhysicianNpi], 
+    [vi_apiGetBillingCases].[PatientFirstName] AS [PatientFirstName], 
+    [vi_apiGetBillingCases].[PatientId] AS [PatientId], 
+    [vi_apiGetBillingCases].[PatientLastName] AS [PatientLastName], 
+    [vi_apiGetBillingCases].[PatientMiddleName] AS [PatientMiddleName], 
+    [vi_apiGetBillingCases].[PatientSex] AS [PatientSex], 
+    [vi_apiGetBillingCases].[PatientStatus] AS [PatientStatus], 
+    [vi_apiGetBillingCases].[PatientAddress1] AS [PatientAddress1], 
+    [vi_apiGetBillingCases].[PatientAddress2] AS [PatientAddress2], 
+    [vi_apiGetBillingCases].[PatientCity] AS [PatientCity], 
+    [vi_apiGetBillingCases].[PatientState] AS [PatientState], 
+    [vi_apiGetBillingCases].[PatientPostalCode] AS [PatientPostalCode], 
+    [vi_apiGetBillingCases].[PayorCode] AS [PayorCode], 
+    [vi_apiGetBillingCases].[PlaceOfService] AS [PlaceOfService], 
+    [vi_apiGetBillingCases].[PayorCode2] AS [PayorCode2], 
+    [vi_apiGetBillingCases].[PlaceOfService2] AS [PlaceOfService2], 
+    [vi_apiGetBillingCases].[PayorID] AS [PayorID], 
+    [vi_apiGetBillingCases].[PayorID2] AS [PayorID2], 
+    [vi_apiGetBillingCases].[QNS] AS [QNS], 
+    [vi_apiGetBillingCases].[QNSReason] AS [QNSReason], 
+    [vi_apiGetBillingCases].[RepeatCount] AS [RepeatCount], 
+    [vi_apiGetBillingCases].[SpecimenType] AS [SpecimenType], 
+    [vi_apiGetBillingCases].[IsActive] AS [IsActive]
+    FROM [dbo].[vi_apiGetBillingCases] AS [vi_apiGetBillingCases]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vi_ClientDoctor" EntityType="Self.vi_ClientDoctor" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vi_ClientDoctor].[DoctorId] AS [DoctorId], 
+    [vi_ClientDoctor].[ClientId] AS [ClientId], 
+    [vi_ClientDoctor].[ClientName] AS [ClientName], 
+    [vi_ClientDoctor].[PhysicianFirstName] AS [PhysicianFirstName], 
+    [vi_ClientDoctor].[PhysicianLastName] AS [PhysicianLastName], 
+    [vi_ClientDoctor].[NPI] AS [NPI]
+    FROM [dbo].[vi_ClientDoctor] AS [vi_ClientDoctor]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vi_DoctorClientList" EntityType="Self.vi_DoctorClientList" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vi_DoctorClientList].[DoctorId] AS [DoctorId], 
+    [vi_DoctorClientList].[Client] AS [Client]
+    FROM [dbo].[vi_DoctorClientList] AS [vi_DoctorClientList]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vi_GetAnalyticsCasePatientInfo" EntityType="Self.vi_GetAnalyticsCasePatientInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vi_GetAnalyticsCasePatientInfo].[CaseNumber] AS [CaseNumber], 
+    [vi_GetAnalyticsCasePatientInfo].[DateofService] AS [DateofService], 
+    [vi_GetAnalyticsCasePatientInfo].[ExternalPatientID] AS [ExternalPatientID], 
+    [vi_GetAnalyticsCasePatientInfo].[FirstName] AS [FirstName], 
+    [vi_GetAnalyticsCasePatientInfo].[LastName] AS [LastName], 
+    [vi_GetAnalyticsCasePatientInfo].[MiddleName] AS [MiddleName], 
+    [vi_GetAnalyticsCasePatientInfo].[Suffix] AS [Suffix], 
+    [vi_GetAnalyticsCasePatientInfo].[DateOfBirth] AS [DateOfBirth], 
+    [vi_GetAnalyticsCasePatientInfo].[Gender] AS [Gender], 
+    [vi_GetAnalyticsCasePatientInfo].[MRN] AS [MRN], 
+    [vi_GetAnalyticsCasePatientInfo].[ClientName] AS [ClientName], 
+    [vi_GetAnalyticsCasePatientInfo].[ClientCode] AS [ClientCode], 
+    [vi_GetAnalyticsCasePatientInfo].[FacilityName] AS [FacilityName], 
+    [vi_GetAnalyticsCasePatientInfo].[OrderingPhysicianLastName] AS [OrderingPhysicianLastName], 
+    [vi_GetAnalyticsCasePatientInfo].[OrderingPhysicianFirstName] AS [OrderingPhysicianFirstName], 
+    [vi_GetAnalyticsCasePatientInfo].[Address1] AS [Address1], 
+    [vi_GetAnalyticsCasePatientInfo].[Address2] AS [Address2], 
+    [vi_GetAnalyticsCasePatientInfo].[Address3] AS [Address3], 
+    [vi_GetAnalyticsCasePatientInfo].[City] AS [City], 
+    [vi_GetAnalyticsCasePatientInfo].[State] AS [State], 
+    [vi_GetAnalyticsCasePatientInfo].[PostalCode] AS [PostalCode], 
+    [vi_GetAnalyticsCasePatientInfo].[Phone] AS [Phone], 
+    [vi_GetAnalyticsCasePatientInfo].[Fax] AS [Fax], 
+    [vi_GetAnalyticsCasePatientInfo].[SpecimenTypeName] AS [SpecimenTypeName], 
+    [vi_GetAnalyticsCasePatientInfo].[CollectedDate] AS [CollectedDate], 
+    [vi_GetAnalyticsCasePatientInfo].[ReceivedDate] AS [ReceivedDate], 
+    [vi_GetAnalyticsCasePatientInfo].[AccessionId] AS [AccessionId], 
+    [vi_GetAnalyticsCasePatientInfo].[PreSortFlowCD38+%] AS [PreSortFlowCD38+%], 
+    [vi_GetAnalyticsCasePatientInfo].[Comments] AS [Comments], 
+    [vi_GetAnalyticsCasePatientInfo].[CD138PurityPass] AS [CD138PurityPass], 
+    [vi_GetAnalyticsCasePatientInfo].[RNAPurityIntegrityPass] AS [RNAPurityIntegrityPass], 
+    [vi_GetAnalyticsCasePatientInfo].[QNSComments] AS [QNSComments], 
+    [vi_GetAnalyticsCasePatientInfo].[OrderDate] AS [OrderDate], 
+    [vi_GetAnalyticsCasePatientInfo].[CompletedDate] AS [CompletedDate], 
+    [vi_GetAnalyticsCasePatientInfo].[SocialSecurityNo] AS [SocialSecurityNo], 
+    [vi_GetAnalyticsCasePatientInfo].[PatientAddress1] AS [PatientAddress1], 
+    [vi_GetAnalyticsCasePatientInfo].[PatientAddress2] AS [PatientAddress2], 
+    [vi_GetAnalyticsCasePatientInfo].[PatientCity] AS [PatientCity], 
+    [vi_GetAnalyticsCasePatientInfo].[PatientState] AS [PatientState], 
+    [vi_GetAnalyticsCasePatientInfo].[PatientPostalCode] AS [PatientPostalCode], 
+    [vi_GetAnalyticsCasePatientInfo].[QNS] AS [QNS], 
+    [vi_GetAnalyticsCasePatientInfo].[ComputedICD10Codes] AS [ComputedICD10Codes], 
+    [vi_GetAnalyticsCasePatientInfo].[IsCancelled] AS [IsCancelled]
+    FROM [dbo].[vi_GetAnalyticsCasePatientInfo] AS [vi_GetAnalyticsCasePatientInfo]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Accession_Client" Association="Self.FK_Accession_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Accession" EntitySet="Accession" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accession_Doctor" Association="Self.FK_Accession_Doctor">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="Accession" EntitySet="Accession" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accession_Doctor1" Association="Self.FK_Accession_Doctor1">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="Accession" EntitySet="Accession" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accession_Facility" Association="Self.FK_Accession_Facility">
+            <End Role="Facility" EntitySet="Facility" />
+            <End Role="Accession" EntitySet="Accession" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accession_Patient" Association="Self.FK_Accession_Patient">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Accession" EntitySet="Accession" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LisCase_Accession" Association="Self.FK_LisCase_Accession">
+            <End Role="Accession" EntitySet="Accession" />
+            <End Role="LisCase" EntitySet="LisCase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LisCase_Payor1" Association="Self.FK_LisCase_Payor1">
+            <End Role="Payor" EntitySet="Payor" />
+            <End Role="LisCase" EntitySet="LisCase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LisCase_Payor2" Association="Self.FK_LisCase_Payor2">
+            <End Role="Payor" EntitySet="Payor" />
+            <End Role="LisCase" EntitySet="LisCase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientInsurance_LisCase" Association="Self.FK_PatientInsurance_LisCase">
+            <End Role="LisCase" EntitySet="LisCase" />
+            <End Role="PatientInsurance" EntitySet="PatientInsurance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payor_PlaceOfService" Association="Self.FK_Payor_PlaceOfService">
+            <End Role="enum_PlaceOfService" EntitySet="enum_PlaceOfService" />
+            <End Role="Payor" EntitySet="Payor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SGNL_LISModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Accession">
+          <Key>
+            <PropertyRef Name="AccessionId" />
+          </Key>
+          <Property Name="AccessionId" Type="Int32" Nullable="false" />
+          <Property Name="PatientId" Type="Int32" />
+          <Property Name="BillTypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ReasonForReferral" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ClinicalData" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="OrderDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="CompletedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ClinicalHistory" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="FacilityId" Type="Int32" />
+          <Property Name="RequisitionNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderingPhysician" Type="Int32" />
+          <Property Name="RenderingPhysician" Type="Int32" />
+          <Property Name="Deficiencies" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FlagForReview" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Accession_Client" FromRole="Accession" ToRole="Client" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FK_Accession_Doctor" FromRole="Accession" ToRole="Doctor" />
+          <NavigationProperty Name="Doctor1" Relationship="Self.FK_Accession_Doctor1" FromRole="Accession" ToRole="Doctor" />
+          <NavigationProperty Name="Facility" Relationship="Self.FK_Accession_Facility" FromRole="Accession" ToRole="Facility" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK_Accession_Patient" FromRole="Accession" ToRole="Patient" />
+          <Property Name="LabId" Type="Int32" />
+          <NavigationProperty Name="LisCases" Relationship="SGNL_LISModel.FK_LisCase_Accession" FromRole="Accession" ToRole="LisCase" />
+          <Property Name="LastCompletedDate" Type="DateTimeOffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AccountType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Address1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Address3" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentEffectiveDate" Type="DateTime" Precision="0" />
+          <Property Name="FacilityId" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FlagForReview" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Accessions" Relationship="Self.FK_Accession_Client" FromRole="Client" ToRole="Accession" />
+          <Property Name="ClientId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="DoctorId" />
+          </Key>
+          <Property Name="DoctorId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Suffix" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NPI" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DoctorTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="LastModifiedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FlagForReview" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Accessions" Relationship="Self.FK_Accession_Doctor" FromRole="Doctor" ToRole="Accession" />
+          <NavigationProperty Name="Accessions1" Relationship="Self.FK_Accession_Doctor1" FromRole="Doctor" ToRole="Accession" />
+          <NavigationProperty Name="vi_DoctorClientList" Relationship="SGNL_LISModel.FK_DoctorClientList_DoctorId" FromRole="Doctor" ToRole="vi_DoctorClientList" />
+        </EntityType>
+        <EntityType Name="Facility">
+          <Key>
+            <PropertyRef Name="FacilityId" />
+          </Key>
+          <Property Name="FacilityId" Type="Int32" Nullable="false" />
+          <Property Name="FacilityName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="FacilityState" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FlagForReview" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Accessions" Relationship="Self.FK_Accession_Facility" FromRole="Facility" ToRole="Accession" />
+        </EntityType>
+        <EntityType Name="Lab">
+          <Key>
+            <PropertyRef Name="LabId" />
+          </Key>
+          <Property Name="LabId" Type="Int32" Nullable="false" />
+          <Property Name="LabCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LabName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientLabId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FlagForReview" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="PatientId" />
+          </Key>
+          <Property Name="PatientId" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Suffix" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SocialSecurityNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ethnicity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaritalStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MRN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExternalPatientID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PatientStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FlagForReview" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Accessions" Relationship="Self.FK_Accession_Patient" FromRole="Patient" ToRole="Accession" />
+          <Property Name="Address1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StateProvince" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Accession_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Accession" Type="Self.Accession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Accession">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accession_Doctor">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+          <End Role="Accession" Type="Self.Accession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="DoctorId" />
+            </Principal>
+            <Dependent Role="Accession">
+              <PropertyRef Name="OrderingPhysician" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accession_Doctor1">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+          <End Role="Accession" Type="Self.Accession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="DoctorId" />
+            </Principal>
+            <Dependent Role="Accession">
+              <PropertyRef Name="RenderingPhysician" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accession_Facility">
+          <End Role="Facility" Type="Self.Facility" Multiplicity="0..1" />
+          <End Role="Accession" Type="Self.Accession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facility">
+              <PropertyRef Name="FacilityId" />
+            </Principal>
+            <Dependent Role="Accession">
+              <PropertyRef Name="FacilityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accession_Patient">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="Accession" Type="Self.Accession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="PatientId" />
+            </Principal>
+            <Dependent Role="Accession">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SGNL_LISEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accessions" EntityType="Self.Accession" />
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="Doctors" EntityType="Self.Doctor" />
+          <EntitySet Name="Facilities" EntityType="Self.Facility" />
+          <EntitySet Name="Labs" EntityType="Self.Lab" />
+          <EntitySet Name="Patients" EntityType="Self.Patient" />
+          <AssociationSet Name="FK_Accession_Client" Association="Self.FK_Accession_Client">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="Accession" EntitySet="Accessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accession_Doctor" Association="Self.FK_Accession_Doctor">
+            <End Role="Doctor" EntitySet="Doctors" />
+            <End Role="Accession" EntitySet="Accessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accession_Doctor1" Association="Self.FK_Accession_Doctor1">
+            <End Role="Doctor" EntitySet="Doctors" />
+            <End Role="Accession" EntitySet="Accessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accession_Facility" Association="Self.FK_Accession_Facility">
+            <End Role="Facility" EntitySet="Facilities" />
+            <End Role="Accession" EntitySet="Accessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accession_Patient" Association="Self.FK_Accession_Patient">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="Accession" EntitySet="Accessions" />
+          </AssociationSet>
+          <FunctionImport Name="usp_UpdateLisWarehouse">
+          <Parameter Name="CaseNumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="vi_DoctorClientList" EntityType="SGNL_LISModel.vi_DoctorClientList" />
+          <AssociationSet Name="FK_DoctorClientList_DoctorId" Association="SGNL_LISModel.FK_DoctorClientList_DoctorId">
+            <End Role="Doctor" EntitySet="Doctors" />
+            <End Role="vi_DoctorClientList" EntitySet="vi_DoctorClientList" />
+          </AssociationSet>
+          <EntitySet Name="Notes" EntityType="SGNL_LISModel.Note" />
+          <EntitySet Name="Payors" EntityType="SGNL_LISModel.Payor" />
+          <EntitySet Name="CaseErrorReports" EntityType="SGNL_LISModel.CaseErrorReport" />
+          <FunctionImport Name="usp_UpdateMessageImportLog">
+            <Parameter Name="CaseNumber" Mode="In" Type="String" />
+            <Parameter Name="ExecutableName" Mode="In" Type="String" />
+            <Parameter Name="ExecutableVersion" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="PatientInsurances" EntityType="SGNL_LISModel.PatientInsurance" />
+          <EntitySet Name="LisCases" EntityType="SGNL_LISModel.LisCase" />
+          <AssociationSet Name="FK_LisCase_Accession" Association="SGNL_LISModel.FK_LisCase_Accession">
+            <End Role="Accession" EntitySet="Accessions" />
+            <End Role="LisCase" EntitySet="LisCases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LisCase_Payor1" Association="SGNL_LISModel.FK_LisCase_Payor1">
+            <End Role="Payor" EntitySet="Payors" />
+            <End Role="LisCase" EntitySet="LisCases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LisCase_Payor2" Association="SGNL_LISModel.FK_LisCase_Payor2">
+            <End Role="Payor" EntitySet="Payors" />
+            <End Role="LisCase" EntitySet="LisCases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientInsurance_LisCase" Association="SGNL_LISModel.FK_PatientInsurance_LisCase">
+            <End Role="LisCase" EntitySet="LisCases" />
+            <End Role="PatientInsurance" EntitySet="PatientInsurances" />
+          </AssociationSet>
+          <EntitySet Name="enum_PlaceOfService" EntityType="SGNL_LISModel.enum_PlaceOfService" />
+          <AssociationSet Name="FK_Payor_PlaceOfService" Association="SGNL_LISModel.FK_Payor_PlaceOfService">
+            <End Role="enum_PlaceOfService" EntitySet="enum_PlaceOfService" />
+            <End Role="Payor" EntitySet="Payors" />
+          </AssociationSet>
+          <FunctionImport Name="usp_GetAnalyticsCasePatientInfo" ReturnType="Collection(SGNL_LISModel.usp_GetAnalyticsCasePatientInfo_Result)">
+            <Parameter Name="s_CaseNumbers" Mode="In" Type="String" />
+            <Parameter Name="n_OrderingPhysicianID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="CELHeaderInfoes" EntityType="SGNL_LISModel.CELHeaderInfo" />
+          <EntitySet Name="vi_ClientDoctor" EntityType="SGNL_LISModel.vi_ClientDoctor" />
+          <EntitySet Name="Reports" EntityType="SGNL_LISModel.Report" />
+          <EntitySet Name="vi_apiGetBillingCases" EntityType="SGNL_LISModel.vi_apiGetBillingCases" />
+          <EntitySet Name="vi_GetAnalyticsCasePatientInfo" EntityType="SGNL_LISModel.vi_GetAnalyticsCasePatientInfo" />
+          </EntityContainer>
+        <EntityType Name="vi_DoctorClientList">
+          <Key>
+            <PropertyRef Name="DoctorId" />
+          </Key>
+          <Property Name="DoctorId" Type="Int32" Nullable="false" />
+          <Property Name="Client" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Doctor" Relationship="SGNL_LISModel.FK_DoctorClientList_DoctorId" FromRole="vi_DoctorClientList" ToRole="Doctor" />
+        </EntityType>
+        <Association Name="FK_DoctorClientList_DoctorId">
+          <End Type="SGNL_LISModel.Doctor" Role="Doctor" Multiplicity="1" />
+          <End Type="SGNL_LISModel.vi_DoctorClientList" Role="vi_DoctorClientList" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="DoctorId" />
+            </Principal>
+            <Dependent Role="vi_DoctorClientList">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Note">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoteId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Note1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NoteType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Payor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PayorCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PayorName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPhone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ContactAddr1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ContactAddr2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ContactCity" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ContactState" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ContactZipCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FlagForReview" Type="Byte" />
+          <Property Name="PlaceOfService" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LisCases" Relationship="SGNL_LISModel.FK_LisCase_Payor1" FromRole="Payor" ToRole="LisCase" />
+          <NavigationProperty Name="LisCases1" Relationship="SGNL_LISModel.FK_LisCase_Payor2" FromRole="Payor" ToRole="LisCase" />
+          <NavigationProperty Name="enum_PlaceOfService" Relationship="SGNL_LISModel.FK_Payor_PlaceOfService" FromRole="Payor" ToRole="enum_PlaceOfService" />
+          </EntityType>
+        <EntityType Name="CaseErrorReport">
+          <Key>
+            <PropertyRef Name="CaseNumber" />
+          </Key>
+          <Property Name="CaseNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ErrorType" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ErrorMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PatientInsurance">
+          <Key>
+            <PropertyRef Name="CaseId" />
+            <PropertyRef Name="Rank" />
+          </Key>
+          <Property Name="CaseId" Type="Int32" Nullable="false" />
+          <Property Name="CaseNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Rank" Type="Int32" Nullable="false" />
+          <Property Name="InsuredRelationship" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubscriberFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubscriberLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubscriberMiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubscriberGender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubscriberDateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="SubscriberAddress1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SubscriberAddress2" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SubscriberCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubscriberStateProvince" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubscriberCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubscriberPostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubscriberPhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HomePlan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PlanType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PolicyNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GroupNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AuthorizationNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="LastModifiedUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LisCase" Relationship="SGNL_LISModel.FK_PatientInsurance_LisCase" FromRole="PatientInsurance" ToRole="LisCase" />
+          <Property Name="PayorNetwork1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PayorNetwork2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LisCase">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccessionId" Type="Int32" Nullable="false" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
+          <Property Name="isRescan" Type="Boolean" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="RescanCaseNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CaseNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateofService" Type="DateTime" Precision="0" />
+          <Property Name="DiagnosisCode" Type="String" MaxLength="450" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ICD9Codes" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
+          <Property Name="ICD10Codes" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
+          <Property Name="ComputedICD10Codes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ICD10Source" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="LabId" Type="Int32" />
+          <Property Name="PRS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PayorId1" Type="Int32" Nullable="false" />
+          <Property Name="PayorId2" Type="Int32" Nullable="false" />
+          <Property Name="QNS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="QNSReason" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="RepeatCount" Type="Int32" />
+          <Property Name="SubGroupDesignation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedUser" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FlagForReview" Type="Byte" Nullable="false" />
+          <Property Name="LastCaseEdit" Type="DateTimeOffset" Nullable="false" Precision="0" />
+          <Property Name="LastCaseEditUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Accession" Relationship="SGNL_LISModel.FK_LisCase_Accession" FromRole="LisCase" ToRole="Accession" />
+          <NavigationProperty Name="Payor" Relationship="SGNL_LISModel.FK_LisCase_Payor1" FromRole="LisCase" ToRole="Payor" />
+          <NavigationProperty Name="Payor1" Relationship="SGNL_LISModel.FK_LisCase_Payor2" FromRole="LisCase" ToRole="Payor" />
+          <NavigationProperty Name="PatientInsurances" Relationship="SGNL_LISModel.FK_PatientInsurance_LisCase" FromRole="LisCase" ToRole="PatientInsurance" />
+          <Property Name="CompletedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="LastCompletedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="WorkflowStep" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_LisCase_Accession">
+          <End Type="SGNL_LISModel.Accession" Role="Accession" Multiplicity="1" />
+          <End Type="SGNL_LISModel.LisCase" Role="LisCase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accession">
+              <PropertyRef Name="AccessionId" />
+            </Principal>
+            <Dependent Role="LisCase">
+              <PropertyRef Name="AccessionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LisCase_Payor1">
+          <End Type="SGNL_LISModel.Payor" Role="Payor" Multiplicity="1" />
+          <End Type="SGNL_LISModel.LisCase" Role="LisCase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LisCase">
+              <PropertyRef Name="PayorId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LisCase_Payor2">
+          <End Type="SGNL_LISModel.Payor" Role="Payor" Multiplicity="1" />
+          <End Type="SGNL_LISModel.LisCase" Role="LisCase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LisCase">
+              <PropertyRef Name="PayorId2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientInsurance_LisCase">
+          <End Type="SGNL_LISModel.LisCase" Role="LisCase" Multiplicity="1" />
+          <End Type="SGNL_LISModel.PatientInsurance" Role="PatientInsurance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LisCase">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PatientInsurance">
+              <PropertyRef Name="CaseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="enum_PlaceOfService">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Item" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Payors" Relationship="SGNL_LISModel.FK_Payor_PlaceOfService" FromRole="enum_PlaceOfService" ToRole="Payor" />
+        </EntityType>
+        <Association Name="FK_Payor_PlaceOfService">
+          <End Type="SGNL_LISModel.enum_PlaceOfService" Role="enum_PlaceOfService" Multiplicity="1" />
+          <End Type="SGNL_LISModel.Payor" Role="Payor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="enum_PlaceOfService">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Payor">
+              <PropertyRef Name="PlaceOfService" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="usp_GetAnalyticsCasePatientInfo_Result">
+          <Property Type="String" Name="CaseNumber" Nullable="false" MaxLength="50" />
+          <Property Type="DateTimeOffset" Name="CompletedDate" Nullable="true" />
+          <Property Type="DateTime" Name="DateofService" Nullable="true" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Suffix" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="DateOfBirth" Nullable="true" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MRN" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ClientName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="FacilityName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="OrderingPhysicianLastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OrderingPhysicianFirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Address1" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Address2" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Address3" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="State" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="PostalCode" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Fax" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SpecimenTypeName" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="CollectionDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ReceivedDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="AccessionId" Nullable="true" />
+          <Property Type="String" Name="PreSortFlowCD38__" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="CELHeaderInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CaseNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CaseNumberQualifier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ScanDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ParseDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="FileTypeIdentifier" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="AlgorithmName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ArrayType" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ScannerId" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="FluidicsStationID" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="FluidicsModuleID" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="FileIdentifier" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ScannerOperator" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="FileCreator" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="UploaderID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UploaderWorkEnvironment" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="OriginalCELFilePath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CELFilename" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ResultsCreationDate" Type="DateTime" Precision="3" />
+          <Property Name="ArrayBarCode" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="QCCreationDate" Type="DateTime" Precision="3" />
+          <Property Name="StudyId" Type="Int32" />
+          <Property Name="CELFileCreationDate" Type="DateTime" Precision="3" />
+          <Property Name="CELFileModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="vi_ClientDoctor">
+          <Key>
+            <PropertyRef Name="DoctorId" />
+          </Key>
+          <Property Name="DoctorId" Type="Int32" Nullable="false" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="ClientName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PhysicianFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhysicianLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NPI" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Report">
+          <Key>
+            <PropertyRef Name="CaseNumber" />
+            <PropertyRef Name="Version" />
+          </Key>
+          <Property Name="CaseNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="VersionTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SignedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="SignedUserId" Type="Int32" />
+          <Property Name="SignedUserFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SignedUserLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReportTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReportTemplateId" Type="Int32" />
+          <Property Name="ReportTemplateName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DocumentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MyPRSRiskScore" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MyPRSRiskClassification" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PatientSubtype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Document" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vi_GetAnalyticsCasePatientInfo">
+          <Key>
+            <PropertyRef Name="CaseNumber" />
+          </Key>
+          <Property Name="CaseNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateofService" Type="DateTime" Precision="0" />
+          <Property Name="ExternalPatientID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Suffix" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MRN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ClientCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FacilityName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="OrderingPhysicianLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderingPhysicianFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Address3" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SpecimenTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CollectedDate" Type="DateTime" Precision="3" />
+          <Property Name="ReceivedDate" Type="DateTime" Precision="3" />
+          <Property Name="AccessionId" Type="Int32" />
+          <Property Name="PreSortFlowCD38__" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="CD138PurityPass" Type="Boolean" />
+          <Property Name="RNAPurityIntegrityPass" Type="Boolean" />
+          <Property Name="QNSComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OrderDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="CompletedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="SocialSecurityNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PatientAddress1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PatientAddress2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PatientCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PatientState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PatientPostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QNS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ComputedICD10Codes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsCancelled" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="vi_apiGetBillingCases">
+          <Key>
+            <PropertyRef Name="CaseNumber" />
+            <PropertyRef Name="ICD10Source" />
+            <PropertyRef Name="IsActive" />
+          </Key>
+          <Property Name="Billable" Type="Boolean" />
+          <Property Name="BillingTestType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Cancelled" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CancelledReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BillType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CaseNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="ClientName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CompletedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="CreatedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="DateofService" Type="DateTime" Precision="0" />
+          <Property Name="Deficiencies" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FacilityId" Type="Int32" />
+          <Property Name="FacilityName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ICD9Codes" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
+          <Property Name="ICD10Codes" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
+          <Property Name="ComputedICD10Codes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ICD10Source" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="IsComplete" Type="Boolean" />
+          <Property Name="InsuranceCompanyName1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="InsuranceCompanyName2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MRN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderedDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="OrderingPhysician" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="OrderingPhysicianNpi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PatientFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PatientId" Type="Int32" />
+          <Property Name="PatientLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PatientMiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PatientSex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PatientStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PatientAddress1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PatientAddress2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PatientCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PatientState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PatientPostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PayorCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PlaceOfService" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PayorCode2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PlaceOfService2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PayorID" Type="Int32" />
+          <Property Name="PayorID2" Type="Int32" />
+          <Property Name="QNS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="QNSReason" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="RepeatCount" Type="Int32" />
+          <Property Name="SpecimenType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Int32" Nullable="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SGNL_LISModelStoreContainer" CdmEntityContainer="SGNL_LISEntities">
+          <EntitySetMapping Name="Accessions">
+            <EntityTypeMapping TypeName="SGNL_LISModel.Accession">
+              <MappingFragment StoreEntitySet="Accession">
+                <ScalarProperty Name="LastCompletedDate" ColumnName="LastCompletedDate" />
+                <ScalarProperty Name="LabId" ColumnName="LabId" />
+                <ScalarProperty Name="AccessionId" ColumnName="AccessionId" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="BillTypeName" ColumnName="BillTypeName" />
+                <ScalarProperty Name="ReasonForReferral" ColumnName="ReasonForReferral" />
+                <ScalarProperty Name="ClinicalData" ColumnName="ClinicalData" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="CompletedDate" ColumnName="CompletedDate" />
+                <ScalarProperty Name="ClinicalHistory" ColumnName="ClinicalHistory" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="FacilityId" ColumnName="FacilityId" />
+                <ScalarProperty Name="RequisitionNumber" ColumnName="RequisitionNumber" />
+                <ScalarProperty Name="OrderingPhysician" ColumnName="OrderingPhysician" />
+                <ScalarProperty Name="RenderingPhysician" ColumnName="RenderingPhysician" />
+                <ScalarProperty Name="Deficiencies" ColumnName="Deficiencies" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifiedUser" ColumnName="LastModifiedUser" />
+                <ScalarProperty Name="FlagForReview" ColumnName="FlagForReview" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="SGNL_LISModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address3" ColumnName="Address3" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="CurrentEffectiveDate" ColumnName="CurrentEffectiveDate" />
+                <ScalarProperty Name="FacilityId" ColumnName="FacilityId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifiedUser" ColumnName="LastModifiedUser" />
+                <ScalarProperty Name="FlagForReview" ColumnName="FlagForReview" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doctors">
+            <EntityTypeMapping TypeName="SGNL_LISModel.Doctor">
+              <MappingFragment StoreEntitySet="Doctor">
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="NPI" ColumnName="NPI" />
+                <ScalarProperty Name="DoctorTypeName" ColumnName="DoctorTypeName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="LastModifiedUser" ColumnName="LastModifiedUser" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="FlagForReview" ColumnName="FlagForReview" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facilities">
+            <EntityTypeMapping TypeName="SGNL_LISModel.Facility">
+              <MappingFragment StoreEntitySet="Facility">
+                <ScalarProperty Name="FacilityId" ColumnName="FacilityId" />
+                <ScalarProperty Name="FacilityName" ColumnName="FacilityName" />
+                <ScalarProperty Name="FacilityState" ColumnName="FacilityState" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifiedUser" ColumnName="LastModifiedUser" />
+                <ScalarProperty Name="FlagForReview" ColumnName="FlagForReview" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Labs">
+            <EntityTypeMapping TypeName="SGNL_LISModel.Lab">
+              <MappingFragment StoreEntitySet="Lab">
+                <ScalarProperty Name="LabId" ColumnName="LabId" />
+                <ScalarProperty Name="LabCode" ColumnName="LabCode" />
+                <ScalarProperty Name="LabName" ColumnName="LabName" />
+                <ScalarProperty Name="ClientLabId" ColumnName="ClientLabId" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifiedUser" ColumnName="LastModifiedUser" />
+                <ScalarProperty Name="FlagForReview" ColumnName="FlagForReview" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patients">
+            <EntityTypeMapping TypeName="SGNL_LISModel.Patient">
+              <MappingFragment StoreEntitySet="Patient">
+                <ScalarProperty Name="PrimaryPhone" ColumnName="PrimaryPhone" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="StateProvince" ColumnName="StateProvince" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+                <ScalarProperty Name="SocialSecurityNo" ColumnName="SocialSecurityNo" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Ethnicity" ColumnName="Ethnicity" />
+                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+                <ScalarProperty Name="MRN" ColumnName="MRN" />
+                <ScalarProperty Name="ExternalPatientID" ColumnName="ExternalPatientID" />
+                <ScalarProperty Name="PatientStatus" ColumnName="PatientStatus" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifiedUser" ColumnName="LastModifiedUser" />
+                <ScalarProperty Name="FlagForReview" ColumnName="FlagForReview" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_UpdateLisWarehouse" FunctionName="SGNL_LISModel.Store.usp_UpdateLisWarehouse" />
+          <EntitySetMapping Name="vi_DoctorClientList">
+            <EntityTypeMapping TypeName="SGNL_LISModel.vi_DoctorClientList">
+              <MappingFragment StoreEntitySet="vi_DoctorClientList">
+                <ScalarProperty Name="Client" ColumnName="Client" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notes">
+            <EntityTypeMapping TypeName="SGNL_LISModel.Note">
+              <MappingFragment StoreEntitySet="Notes">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="NoteType" ColumnName="NoteType" />
+                <ScalarProperty Name="Note1" ColumnName="Note" />
+                <ScalarProperty Name="NoteId" ColumnName="NoteId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payors">
+            <EntityTypeMapping TypeName="SGNL_LISModel.Payor">
+              <MappingFragment StoreEntitySet="Payor">
+                <ScalarProperty Name="PlaceOfService" ColumnName="PlaceOfService" />
+                <ScalarProperty Name="FlagForReview" ColumnName="FlagForReview" />
+                <ScalarProperty Name="LastModifiedUser" ColumnName="LastModifiedUser" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ContactZipCode" ColumnName="ContactZipCode" />
+                <ScalarProperty Name="ContactState" ColumnName="ContactState" />
+                <ScalarProperty Name="ContactCity" ColumnName="ContactCity" />
+                <ScalarProperty Name="ContactAddr2" ColumnName="ContactAddr2" />
+                <ScalarProperty Name="ContactAddr1" ColumnName="ContactAddr1" />
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+                <ScalarProperty Name="PayorName" ColumnName="PayorName" />
+                <ScalarProperty Name="PayorCode" ColumnName="PayorCode" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CaseErrorReports">
+            <EntityTypeMapping TypeName="SGNL_LISModel.CaseErrorReport">
+              <MappingFragment StoreEntitySet="CaseErrorReport">
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+                <ScalarProperty Name="ErrorType" ColumnName="ErrorType" />
+                <ScalarProperty Name="CaseNumber" ColumnName="CaseNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_UpdateMessageImportLog" FunctionName="SGNL_LISModel.Store.usp_UpdateMessageImportLog" />
+          <EntitySetMapping Name="PatientInsurances">
+            <EntityTypeMapping TypeName="SGNL_LISModel.PatientInsurance">
+              <MappingFragment StoreEntitySet="PatientInsurance">
+                <ScalarProperty Name="PayorNetwork2" ColumnName="PayorNetwork2" />
+                <ScalarProperty Name="PayorNetwork1" ColumnName="PayorNetwork1" />
+                <ScalarProperty Name="LastModifiedUser" ColumnName="LastModifiedUser" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="AuthorizationNumber" ColumnName="AuthorizationNumber" />
+                <ScalarProperty Name="GroupNumber" ColumnName="GroupNumber" />
+                <ScalarProperty Name="PolicyNumber" ColumnName="PolicyNumber" />
+                <ScalarProperty Name="PlanType" ColumnName="PlanType" />
+                <ScalarProperty Name="HomePlan" ColumnName="HomePlan" />
+                <ScalarProperty Name="SubscriberPhoneNumber" ColumnName="SubscriberPhoneNumber" />
+                <ScalarProperty Name="SubscriberPostalCode" ColumnName="SubscriberPostalCode" />
+                <ScalarProperty Name="SubscriberCountry" ColumnName="SubscriberCountry" />
+                <ScalarProperty Name="SubscriberStateProvince" ColumnName="SubscriberStateProvince" />
+                <ScalarProperty Name="SubscriberCity" ColumnName="SubscriberCity" />
+                <ScalarProperty Name="SubscriberAddress2" ColumnName="SubscriberAddress2" />
+                <ScalarProperty Name="SubscriberAddress1" ColumnName="SubscriberAddress1" />
+                <ScalarProperty Name="SubscriberDateOfBirth" ColumnName="SubscriberDateOfBirth" />
+                <ScalarProperty Name="SubscriberGender" ColumnName="SubscriberGender" />
+                <ScalarProperty Name="SubscriberMiddleName" ColumnName="SubscriberMiddleName" />
+                <ScalarProperty Name="SubscriberLastName" ColumnName="SubscriberLastName" />
+                <ScalarProperty Name="SubscriberFirstName" ColumnName="SubscriberFirstName" />
+                <ScalarProperty Name="InsuredRelationship" ColumnName="InsuredRelationship" />
+                <ScalarProperty Name="Rank" ColumnName="Rank" />
+                <ScalarProperty Name="CaseNumber" ColumnName="CaseNumber" />
+                <ScalarProperty Name="CaseId" ColumnName="CaseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LisCases">
+            <EntityTypeMapping TypeName="SGNL_LISModel.LisCase">
+              <MappingFragment StoreEntitySet="LisCase">
+                <ScalarProperty Name="WorkflowStep" ColumnName="WorkflowStep" />
+                <ScalarProperty Name="LastCompletedDate" ColumnName="LastCompletedDate" />
+                <ScalarProperty Name="CompletedDate" ColumnName="CompletedDate" />
+                <ScalarProperty Name="LastCaseEditUser" ColumnName="LastCaseEditUser" />
+                <ScalarProperty Name="LastCaseEdit" ColumnName="LastCaseEdit" />
+                <ScalarProperty Name="FlagForReview" ColumnName="FlagForReview" />
+                <ScalarProperty Name="LastModifiedUser" ColumnName="LastModifiedUser" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="SubGroupDesignation" ColumnName="SubGroupDesignation" />
+                <ScalarProperty Name="RepeatCount" ColumnName="RepeatCount" />
+                <ScalarProperty Name="QNSReason" ColumnName="QNSReason" />
+                <ScalarProperty Name="QNS" ColumnName="QNS" />
+                <ScalarProperty Name="PayorId2" ColumnName="PayorId2" />
+                <ScalarProperty Name="PayorId1" ColumnName="PayorId1" />
+                <ScalarProperty Name="PRS" ColumnName="PRS" />
+                <ScalarProperty Name="LabId" ColumnName="LabId" />
+                <ScalarProperty Name="ICD10Source" ColumnName="ICD10Source" />
+                <ScalarProperty Name="ComputedICD10Codes" ColumnName="ComputedICD10Codes" />
+                <ScalarProperty Name="ICD10Codes" ColumnName="ICD10Codes" />
+                <ScalarProperty Name="ICD9Codes" ColumnName="ICD9Codes" />
+                <ScalarProperty Name="DiagnosisCode" ColumnName="DiagnosisCode" />
+                <ScalarProperty Name="DateofService" ColumnName="DateofService" />
+                <ScalarProperty Name="CaseNumber" ColumnName="CaseNumber" />
+                <ScalarProperty Name="RescanCaseNumber" ColumnName="RescanCaseNumber" />
+                <ScalarProperty Name="isRescan" ColumnName="isRescan" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="AccessionId" ColumnName="AccessionId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="enum_PlaceOfService">
+            <EntityTypeMapping TypeName="SGNL_LISModel.enum_PlaceOfService">
+              <MappingFragment StoreEntitySet="enum_PlaceOfService">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Item" ColumnName="Item" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CELHeaderInfoes">
+            <EntityTypeMapping TypeName="SGNL_LISModel.CELHeaderInfo">
+              <MappingFragment StoreEntitySet="CELHeaderInfo">
+                <ScalarProperty Name="CELFileModifiedDate" ColumnName="CELFileModifiedDate" />
+                <ScalarProperty Name="CELFileCreationDate" ColumnName="CELFileCreationDate" />
+                <ScalarProperty Name="StudyId" ColumnName="StudyId" />
+                <ScalarProperty Name="QCCreationDate" ColumnName="QCCreationDate" />
+                <ScalarProperty Name="ArrayBarCode" ColumnName="ArrayBarCode" />
+                <ScalarProperty Name="ResultsCreationDate" ColumnName="ResultsCreationDate" />
+                <ScalarProperty Name="CELFilename" ColumnName="CELFilename" />
+                <ScalarProperty Name="OriginalCELFilePath" ColumnName="OriginalCELFilePath" />
+                <ScalarProperty Name="UploaderWorkEnvironment" ColumnName="UploaderWorkEnvironment" />
+                <ScalarProperty Name="UploaderID" ColumnName="UploaderID" />
+                <ScalarProperty Name="FileCreator" ColumnName="FileCreator" />
+                <ScalarProperty Name="ScannerOperator" ColumnName="ScannerOperator" />
+                <ScalarProperty Name="FileIdentifier" ColumnName="FileIdentifier" />
+                <ScalarProperty Name="FluidicsModuleID" ColumnName="FluidicsModuleID" />
+                <ScalarProperty Name="FluidicsStationID" ColumnName="FluidicsStationID" />
+                <ScalarProperty Name="ScannerId" ColumnName="ScannerId" />
+                <ScalarProperty Name="ArrayType" ColumnName="ArrayType" />
+                <ScalarProperty Name="AlgorithmName" ColumnName="AlgorithmName" />
+                <ScalarProperty Name="FileTypeIdentifier" ColumnName="FileTypeIdentifier" />
+                <ScalarProperty Name="ParseDate" ColumnName="ParseDate" />
+                <ScalarProperty Name="ScanDate" ColumnName="ScanDate" />
+                <ScalarProperty Name="CaseNumberQualifier" ColumnName="CaseNumberQualifier" />
+                <ScalarProperty Name="CaseNumber" ColumnName="CaseNumber" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vi_ClientDoctor">
+            <EntityTypeMapping TypeName="SGNL_LISModel.vi_ClientDoctor">
+              <MappingFragment StoreEntitySet="vi_ClientDoctor">
+                <ScalarProperty Name="NPI" ColumnName="NPI" />
+                <ScalarProperty Name="PhysicianLastName" ColumnName="PhysicianLastName" />
+                <ScalarProperty Name="PhysicianFirstName" ColumnName="PhysicianFirstName" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reports">
+            <EntityTypeMapping TypeName="SGNL_LISModel.Report">
+              <MappingFragment StoreEntitySet="Reports">
+                <ScalarProperty Name="LastModifiedUser" ColumnName="LastModifiedUser" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="Document" ColumnName="Document" />
+                <ScalarProperty Name="PatientSubtype" ColumnName="PatientSubtype" />
+                <ScalarProperty Name="MyPRSRiskClassification" ColumnName="MyPRSRiskClassification" />
+                <ScalarProperty Name="MyPRSRiskScore" ColumnName="MyPRSRiskScore" />
+                <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
+                <ScalarProperty Name="ReportTemplateName" ColumnName="ReportTemplateName" />
+                <ScalarProperty Name="ReportTemplateId" ColumnName="ReportTemplateId" />
+                <ScalarProperty Name="ReportTypeName" ColumnName="ReportTypeName" />
+                <ScalarProperty Name="SignedUserLastName" ColumnName="SignedUserLastName" />
+                <ScalarProperty Name="SignedUserFirstName" ColumnName="SignedUserFirstName" />
+                <ScalarProperty Name="SignedUserId" ColumnName="SignedUserId" />
+                <ScalarProperty Name="SignedDate" ColumnName="SignedDate" />
+                <ScalarProperty Name="VersionTypeName" ColumnName="VersionTypeName" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="CaseNumber" ColumnName="CaseNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vi_GetAnalyticsCasePatientInfo">
+            <EntityTypeMapping TypeName="SGNL_LISModel.vi_GetAnalyticsCasePatientInfo">
+              <MappingFragment StoreEntitySet="vi_GetAnalyticsCasePatientInfo">
+                <ScalarProperty Name="IsCancelled" ColumnName="IsCancelled" />
+                <ScalarProperty Name="ComputedICD10Codes" ColumnName="ComputedICD10Codes" />
+                <ScalarProperty Name="QNS" ColumnName="QNS" />
+                <ScalarProperty Name="PatientPostalCode" ColumnName="PatientPostalCode" />
+                <ScalarProperty Name="PatientState" ColumnName="PatientState" />
+                <ScalarProperty Name="PatientCity" ColumnName="PatientCity" />
+                <ScalarProperty Name="PatientAddress2" ColumnName="PatientAddress2" />
+                <ScalarProperty Name="PatientAddress1" ColumnName="PatientAddress1" />
+                <ScalarProperty Name="SocialSecurityNo" ColumnName="SocialSecurityNo" />
+                <ScalarProperty Name="CompletedDate" ColumnName="CompletedDate" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="QNSComments" ColumnName="QNSComments" />
+                <ScalarProperty Name="RNAPurityIntegrityPass" ColumnName="RNAPurityIntegrityPass" />
+                <ScalarProperty Name="CD138PurityPass" ColumnName="CD138PurityPass" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="PreSortFlowCD38__" ColumnName="PreSortFlowCD38+%" />
+                <ScalarProperty Name="AccessionId" ColumnName="AccessionId" />
+                <ScalarProperty Name="ReceivedDate" ColumnName="ReceivedDate" />
+                <ScalarProperty Name="CollectedDate" ColumnName="CollectedDate" />
+                <ScalarProperty Name="SpecimenTypeName" ColumnName="SpecimenTypeName" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address3" ColumnName="Address3" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="OrderingPhysicianFirstName" ColumnName="OrderingPhysicianFirstName" />
+                <ScalarProperty Name="OrderingPhysicianLastName" ColumnName="OrderingPhysicianLastName" />
+                <ScalarProperty Name="FacilityName" ColumnName="FacilityName" />
+                <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="MRN" ColumnName="MRN" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="ExternalPatientID" ColumnName="ExternalPatientID" />
+                <ScalarProperty Name="DateofService" ColumnName="DateofService" />
+                <ScalarProperty Name="CaseNumber" ColumnName="CaseNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vi_apiGetBillingCases">
+            <EntityTypeMapping TypeName="SGNL_LISModel.vi_apiGetBillingCases">
+              <MappingFragment StoreEntitySet="vi_apiGetBillingCases">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SpecimenType" ColumnName="SpecimenType" />
+                <ScalarProperty Name="RepeatCount" ColumnName="RepeatCount" />
+                <ScalarProperty Name="QNSReason" ColumnName="QNSReason" />
+                <ScalarProperty Name="QNS" ColumnName="QNS" />
+                <ScalarProperty Name="PayorID2" ColumnName="PayorID2" />
+                <ScalarProperty Name="PayorID" ColumnName="PayorID" />
+                <ScalarProperty Name="PlaceOfService2" ColumnName="PlaceOfService2" />
+                <ScalarProperty Name="PayorCode2" ColumnName="PayorCode2" />
+                <ScalarProperty Name="PlaceOfService" ColumnName="PlaceOfService" />
+                <ScalarProperty Name="PayorCode" ColumnName="PayorCode" />
+                <ScalarProperty Name="PatientPostalCode" ColumnName="PatientPostalCode" />
+                <ScalarProperty Name="PatientState" ColumnName="PatientState" />
+                <ScalarProperty Name="PatientCity" ColumnName="PatientCity" />
+                <ScalarProperty Name="PatientAddress2" ColumnName="PatientAddress2" />
+                <ScalarProperty Name="PatientAddress1" ColumnName="PatientAddress1" />
+                <ScalarProperty Name="PatientStatus" ColumnName="PatientStatus" />
+                <ScalarProperty Name="PatientSex" ColumnName="PatientSex" />
+                <ScalarProperty Name="PatientMiddleName" ColumnName="PatientMiddleName" />
+                <ScalarProperty Name="PatientLastName" ColumnName="PatientLastName" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="PatientFirstName" ColumnName="PatientFirstName" />
+                <ScalarProperty Name="OrderingPhysicianNpi" ColumnName="OrderingPhysicianNpi" />
+                <ScalarProperty Name="OrderingPhysician" ColumnName="OrderingPhysician" />
+                <ScalarProperty Name="OrderedDate" ColumnName="OrderedDate" />
+                <ScalarProperty Name="MRN" ColumnName="MRN" />
+                <ScalarProperty Name="InsuranceCompanyName2" ColumnName="InsuranceCompanyName2" />
+                <ScalarProperty Name="InsuranceCompanyName1" ColumnName="InsuranceCompanyName1" />
+                <ScalarProperty Name="IsComplete" ColumnName="IsComplete" />
+                <ScalarProperty Name="ICD10Source" ColumnName="ICD10Source" />
+                <ScalarProperty Name="ComputedICD10Codes" ColumnName="ComputedICD10Codes" />
+                <ScalarProperty Name="ICD10Codes" ColumnName="ICD10Codes" />
+                <ScalarProperty Name="ICD9Codes" ColumnName="ICD9Codes" />
+                <ScalarProperty Name="FacilityName" ColumnName="FacilityName" />
+                <ScalarProperty Name="FacilityId" ColumnName="FacilityId" />
+                <ScalarProperty Name="Deficiencies" ColumnName="Deficiencies" />
+                <ScalarProperty Name="DateofService" ColumnName="DateofService" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CompletedDate" ColumnName="CompletedDate" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="CaseNumber" ColumnName="CaseNumber" />
+                <ScalarProperty Name="BillType" ColumnName="BillType" />
+                <ScalarProperty Name="CancelledReason" ColumnName="CancelledReason" />
+                <ScalarProperty Name="Cancelled" ColumnName="Cancelled" />
+                <ScalarProperty Name="BillingTestType" ColumnName="BillingTestType" />
+                <ScalarProperty Name="Billable" ColumnName="Billable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

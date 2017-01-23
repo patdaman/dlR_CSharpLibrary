@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>d3abe09c-e055-43d7-8c93-0fc1e6237ab3</ProjectGuid>
+    <ProjectGuid>{D3ABE09C-E055-43D7-8C93-0FC1E6237AB3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CommonTools</RootNamespace>
@@ -30,24 +30,659 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="AppDataLib\AppDataLib.Exceptions\Properties\AssemblyInfo.cs" />
+    <Compile Include="AppDataLib\AppDataLib.Exceptions\Exceptions.cs" />
+    <Compile Include="AppDataLib\BaiParser\BAIProcessor.cs" />
+    <Compile Include="AppDataLib\BaiParser\Properties\AssemblyInfo.cs" />
+    <Compile Include="AppDataLib\ConsoleApp\ConsoleAppCore.cs" />
+    <Compile Include="AppDataLib\ConsoleApp\DefaultConsoleApplication.cs" />
+    <Compile Include="AppDataLib\ConsoleApp\DefaultRemotingConsoleApplication.cs" />
+    <Compile Include="AppDataLib\ConsoleApp\DefaultServiceBusConsoleApplication.cs" />
+    <Compile Include="AppDataLib\ConsoleApp\Properties\AssemblyInfo.cs" />
+    <Compile Include="AppDataLib\Enums\Properties\AssemblyInfo.cs" />
+    <Compile Include="AppDataLib\Enums\PrsResultEnums.cs" />
+    <Compile Include="AppDataLib\Enums\PxPortalEnums.cs" />
+    <Compile Include="CommonUtilities\AssemblyUtils\AssemblyUtils.cs" />
+    <Compile Include="CommonUtilities\AssemblyUtils\BuildUtils.cs" />
+    <Compile Include="CommonUtilities\AssemblyUtils\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="CommonUtilities\AssemblyUtils\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="CommonUtilities\AssemblyUtils\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="CommonUtilities\AssemblyUtils\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\Classifier\ClassifierIO.cs" />
+    <Compile Include="CommonUtilities\Classifier\ClassifierUtils.cs" />
+    <Compile Include="CommonUtilities\Classifier\ExpressionBuilder.cs" />
+    <Compile Include="CommonUtilities\Classifier\Filter.cs" />
+    <Compile Include="CommonUtilities\Classifier\IClassifier.cs" />
+    <Compile Include="CommonUtilities\Classifier\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="CommonUtilities\Classifier\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="CommonUtilities\Classifier\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="CommonUtilities\Classifier\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\Collections\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="CommonUtilities\Collections\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="CommonUtilities\Collections\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="CommonUtilities\Collections\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\Collections\SortObservableCollection.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.AppConfiguration\AppConfiguration.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.AppConfiguration\CommandLineConfigProvider.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.AppConfiguration\ConfigFileConfigProvider.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.AppConfiguration\EnvironmentVariableConfigProvider.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.AppConfiguration\IAppConfigurationProvider.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.AppConfiguration\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.AppConfiguration\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.AppConfiguration\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.AppConfiguration\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.Barcode\BarcodeGenerators.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.Crypto.old\Encryption.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.Crypto\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.Crypto\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.Crypto\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.Crypto\PBKDFHasher.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.Crypto\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.Email\EmailMessage.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.Email\EmailObject.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.Email\EmbeddedImage.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.Email\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.Email\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.Email\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.Email\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.Html\HtmlToText.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.Html\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.Html\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.Html\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.Html\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.Html\ValidateHtml.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.MathUtils\MathUtil.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.MathUtils\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.MathUtils\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.MathUtils\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.MathUtils\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.MathUtils\Properties\Resources.Designer.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.MathUtils\Properties\Settings.Designer.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfCommon\IPdfManipulator.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfCommon\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfCommon\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfCommon\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfCommon\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfDrawLib\BrushNames.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfDrawLib\DrawActions.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfDrawLib\FontStyles.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfDrawLib\LineAlignments.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfDrawLib\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfDrawLib\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfDrawLib\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfDrawLib\PdfDrawer.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfDrawLib\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfITextSharp\ITextSharpPdfManipulator.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfITextSharp\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfITextSharp\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfITextSharp\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfITextSharp\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfPdfSharp\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfPdfSharp\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfPdfSharp\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfPdfSharp\PdfSharpPdfManipulator.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfPdfSharp\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfPdfSharp\Database\ConnectionConfig.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfPdfSharp\Database\ConnectionUtils.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfPdfSharp\Database\DatabaseConnection.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfPdfSharp\Database\DBUtils.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfPdfSharp\Database\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfPdfSharp\Database\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfPdfSharp\Database\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="CommonUtilities\CommonUtils.PdfPdfSharp\Database\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\DataStructures\BiDictionary.cs" />
+    <Compile Include="CommonUtilities\DataStructures\ObjectToDictionary.cs" />
+    <Compile Include="CommonUtilities\DataStructures\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\DataStructures\StructMarshal.cs" />
+    <Compile Include="CommonUtilities\DataTableUtils\DataTableExportExtensions.cs" />
+    <Compile Include="CommonUtilities\DataTableUtils\DataTableUtils.cs" />
+    <Compile Include="CommonUtilities\DataTableUtils\ListToDataTable.cs" />
+    <Compile Include="CommonUtilities\DataTableUtils\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\DataTableUtils\TableProvider\TableProvider.cs" />
+    <Compile Include="CommonUtilities\DateUtils\IYearNumberedPeriodItem.cs" />
+    <Compile Include="CommonUtilities\DateUtils\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="CommonUtilities\DateUtils\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="CommonUtilities\DateUtils\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="CommonUtilities\DateUtils\Periodicity.cs" />
+    <Compile Include="CommonUtilities\DateUtils\Periodics.cs" />
+    <Compile Include="CommonUtilities\DateUtils\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\DateUtils\Tools.cs" />
+    <Compile Include="CommonUtilities\DateUtils\YearMonth.cs" />
+    <Compile Include="CommonUtilities\DateUtils\YearNumberedPeriodItem.cs" />
+    <Compile Include="CommonUtilities\DateUtils\YearQuarter.cs" />
+    <Compile Include="CommonUtilities\DateUtils\YearWeek.cs" />
+    <Compile Include="CommonUtilities\DateUtils\YearYear.cs" />
+    <Compile Include="CommonUtilities\ExceptionUtils\ExamineException.cs" />
+    <Compile Include="CommonUtilities\ExceptionUtils\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="CommonUtilities\ExceptionUtils\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="CommonUtilities\ExceptionUtils\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="CommonUtilities\ExceptionUtils\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\ExpandoUtils\ExpandoUtils.cs" />
+    <Compile Include="CommonUtilities\ExpandoUtils\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="CommonUtilities\ExpandoUtils\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="CommonUtilities\ExpandoUtils\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="CommonUtilities\ExpandoUtils\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\FileUtils\FileUtil.cs" />
+    <Compile Include="CommonUtilities\FileUtils\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="CommonUtilities\FileUtils\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="CommonUtilities\FileUtils\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="CommonUtilities\FileUtils\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\FileUtils\TransferSummary.cs" />
+    <Compile Include="CommonUtilities\Json\JsonDeserializer.cs" />
+    <Compile Include="CommonUtilities\Json\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="CommonUtilities\Json\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="CommonUtilities\Json\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="CommonUtilities\Json\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\LINQ\LINQUtils.cs" />
+    <Compile Include="CommonUtilities\LINQ\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="CommonUtilities\LINQ\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="CommonUtilities\LINQ\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="CommonUtilities\LINQ\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\ListUtils\Convert.cs" />
+    <Compile Include="CommonUtilities\ListUtils\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="CommonUtilities\ListUtils\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="CommonUtilities\ListUtils\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="CommonUtilities\ListUtils\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\Logging\CustomLoggingPatternPayload.cs" />
+    <Compile Include="CommonUtilities\Logging\Log4NetHelper.cs" />
+    <Compile Include="CommonUtilities\Logging\LoggingPattern.cs" />
+    <Compile Include="CommonUtilities\Logging\LoggingPatternRenderer.cs" />
+    <Compile Include="CommonUtilities\Logging\LoggingPatternSyslog.cs" />
+    <Compile Include="CommonUtilities\Logging\LoggingPatternUser.cs" />
+    <Compile Include="CommonUtilities\Logging\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="CommonUtilities\Logging\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="CommonUtilities\Logging\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="CommonUtilities\Logging\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\MVVMSupport\EventBehaviourFactory.cs" />
+    <Compile Include="CommonUtilities\MVVMSupport\NotificationEventArgs.cs" />
+    <Compile Include="CommonUtilities\MVVMSupport\NotificationObject.cs" />
+    <Compile Include="CommonUtilities\MVVMSupport\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="CommonUtilities\MVVMSupport\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="CommonUtilities\MVVMSupport\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="CommonUtilities\MVVMSupport\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\MVVMSupport\PropertySupport.cs" />
+    <Compile Include="CommonUtilities\MVVMSupport\RelayCommand.cs" />
+    <Compile Include="CommonUtilities\Reflection\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="CommonUtilities\Reflection\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="CommonUtilities\Reflection\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="CommonUtilities\Reflection\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\Reflection\ReflectionUtils.cs" />
+    <Compile Include="CommonUtilities\SecureString\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="CommonUtilities\SecureString\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="CommonUtilities\SecureString\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="CommonUtilities\SecureString\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\SecureString\SecureStringHelper.cs" />
+    <Compile Include="CommonUtilities\Services\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="CommonUtilities\Services\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="CommonUtilities\Services\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="CommonUtilities\Services\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\Services\ServiceWrapper.cs" />
+    <Compile Include="CommonUtilities\Tasks\IRunnableTaskEntryPoint.cs" />
+    <Compile Include="CommonUtilities\Tasks\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="CommonUtilities\Tasks\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="CommonUtilities\Tasks\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="CommonUtilities\Tasks\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\XML\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="CommonUtilities\XML\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="CommonUtilities\XML\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="CommonUtilities\XML\Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonUtilities\XML\XmlConverter.cs" />
+    <Compile Include="CommonUtilities\XML\XMLDocumentConverter.cs" />
+    <Compile Include="CommonUtilities\XML\XmlDocumentLoader.cs" />
+    <Compile Include="EFDataModel\SGNL_LIS\SGNL_LIS_Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\XIFIN_LIS\XifinLIS_Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XifinLIS_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BusinessLayerObjects\PxPortalBusinessLayer\Models\PxPortalUserProfile.cs" />
+    <Compile Include="BusinessLayerObjects\PxPortalBusinessLayer\Models\UserAccessFilter.cs" />
+    <Compile Include="BusinessLayerObjects\PxPortalBusinessLayer\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="BusinessLayerObjects\PxPortalBusinessLayer\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="BusinessLayerObjects\PxPortalBusinessLayer\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="BusinessLayerObjects\PxPortalBusinessLayer\Properties\AssemblyInfo.cs" />
+    <Compile Include="BusinessLayerObjects\PxPortalBusinessLayer\PxPortalUserCase\PxPortalUserCaseProcessor.cs" />
+    <Compile Include="BusinessLayerObjects\PxPortalBusinessLayer\PxPortalUsers\InMemoryUserDefinition.cs" />
+    <Compile Include="BusinessLayerObjects\PxPortalBusinessLayer\PxPortalUsers\InMemoryUserProcessor.cs" />
+    <Compile Include="BusinessLayerObjects\PxPortalBusinessLayer\PxPortalUsers\IPxPortalUserProcessor.cs" />
+    <Compile Include="BusinessLayerObjects\PxPortalBusinessLayer\PxPortalUsers\PxPortalUserProcessor.cs" />
+    <Compile Include="BusinessLayerObjects\PxPortalBusinessLayer\PxPortalUsers\RoleValues.cs" />
+    <Compile Include="BusinessLayerObjects\PxPortalBusinessLayer\PxPortalUsers\UserProcessorException.cs" />
+    <Compile Include="BusinessLayerObjects\PxPortalBusinessLayer\PxPortalUsers\ValidationUtils.cs" />
+    <Compile Include="BusinessLayerObjects\SignalBusinessLayer\Analytics\AlgorithmVersionProcessor.cs" />
+    <Compile Include="BusinessLayerObjects\SignalBusinessLayer\Analytics\FromDiskTemplateProcessor.cs" />
+    <Compile Include="BusinessLayerObjects\SignalBusinessLayer\Analytics\ITemplateProcessor.cs" />
+    <Compile Include="BusinessLayerObjects\SignalBusinessLayer\Analytics\ResultsReadyProcessor.cs" />
+    <Compile Include="BusinessLayerObjects\SignalBusinessLayer\Analytics\TemplateProcessor.cs" />
+    <Compile Include="BusinessLayerObjects\SignalBusinessLayer\BehaviorBase.cs" />
+    <Compile Include="BusinessLayerObjects\SignalBusinessLayer\BusinessLayerConverter.cs" />
+    <Compile Include="BusinessLayerObjects\SignalBusinessLayer\EventsProcessor.cs" />
+    <Compile Include="BusinessLayerObjects\SignalBusinessLayer\Events\SgnlEventsProcessor.cs" />
+    <Compile Include="BusinessLayerObjects\SignalBusinessLayer\LisCasesProcessor.cs" />
+    <Compile Include="BusinessLayerObjects\SignalBusinessLayer\MailMergeProcessor.cs" />
+    <Compile Include="BusinessLayerObjects\SignalBusinessLayer\NotesProcessor.cs" />
+    <Compile Include="BusinessLayerObjects\SignalBusinessLayer\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="BusinessLayerObjects\SignalBusinessLayer\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="BusinessLayerObjects\SignalBusinessLayer\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="BusinessLayerObjects\SignalBusinessLayer\Properties\AssemblyInfo.cs" />
+    <Compile Include="BusinessLayerObjects\SignalBusinessLayer\PrsResult\IPrsResultsProcessor.cs" />
+    <Compile Include="BusinessLayerObjects\SignalBusinessLayer\PrsResult\NYResultsProcessor.cs" />
+    <Compile Include="BusinessLayerObjects\SignalBusinessLayer\PrsResult\PrsRandomResultGenerator.cs" />
+    <Compile Include="BusinessLayerObjects\SignalBusinessLayer\PrsResult\PrsResultsProcessor.cs" />
+    <Compile Include="BusinessLayerObjects\SignalBusinessLayer\PrsResult\RandomPrsResultProcessor.cs" />
+    <Compile Include="BusinessLayerObjects\SignalBusinessLayer\ReportsProcessor.cs" />
+    <Compile Include="BusinessLayerObjects\SignalBusinessLayer\TransactionProcessor.cs" />
+    <Compile Include="DataLayer\ConcreteRepository.cs" />
+    <Compile Include="DataLayer\IRepository.cs" />
+    <Compile Include="DataLayer\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="DataLayer\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="DataLayer\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="DataLayer\Properties\AssemblyInfo.cs" />
+    <Compile Include="EFDataModel\SGNL_LIS\Accession.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\SGNL_LIS\CaseErrorReport.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\SGNL_LIS\CELHeaderInfo.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\SGNL_LIS\Client.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\SGNL_LIS\Doctor.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\SGNL_LIS\enum_PlaceOfService.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\SGNL_LIS\Facility.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\SGNL_LIS\Lab.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\SGNL_LIS\LisCase.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\SGNL_LIS\Note.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\SGNL_LIS\Partials\SGNL_LISEntities.cs" />
+    <Compile Include="EFDataModel\SGNL_LIS\Patient.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\SGNL_LIS\PatientInsurance.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\SGNL_LIS\Payor.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\SGNL_LIS\Properties\AssemblyInfo.cs" />
+    <Compile Include="EFDataModel\SGNL_LIS\Report.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\SGNL_LIS\SGNL_LIS_Model.Context.cs" />
+    <Compile Include="EFDataModel\SGNL_LIS\SGNL_LIS_Model.Context1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SGNL_LIS_Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\SGNL_LIS\SGNL_LIS_Model.cs" />
+    <Compile Include="EFDataModel\SGNL_LIS\SGNL_LIS_Model.Designer.cs">
+      <DependentUpon>SGNL_LIS_Model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\SGNL_LIS\SGNL_LIS_Model1.Designer.cs" />
+    <Compile Include="EFDataModel\SGNL_LIS\SGNL_LIS_Model2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SGNL_LIS_Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\SGNL_LIS\usp_GetAnalyticsCasePatientInfo_Result.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\SGNL_LIS\vi_apiGetBillingCases.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\SGNL_LIS\vi_ClientDoctor.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\SGNL_LIS\vi_DoctorClientList.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\SGNL_LIS\vi_GetAnalyticsCasePatientInfo.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\SignalEFDataModelCommon\DBNames.cs" />
+    <Compile Include="EFDataModel\SignalEFDataModelCommon\Properties\AssemblyInfo.cs" />
+    <Compile Include="EFDataModel\XIFIN_LIS\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="EFDataModel\XIFIN_LIS\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="EFDataModel\XIFIN_LIS\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="EFDataModel\XIFIN_LIS\Partials\XifinLISEntities.cs" />
+    <Compile Include="EFDataModel\XIFIN_LIS\Properties\AssemblyInfo.cs" />
+    <Compile Include="EFDataModel\XIFIN_LIS\XifinLIS_Model.Context.cs" />
+    <Compile Include="EFDataModel\XIFIN_LIS\XifinLIS_Model.Context1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XifinLIS_Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\XIFIN_LIS\XifinLIS_Model.cs" />
+    <Compile Include="EFDataModel\XIFIN_LIS\XifinLIS_Model.Designer.cs">
+      <DependentUpon>XifinLIS_Model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\XIFIN_LIS\XifinLIS_Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XifinLIS_Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\XIFIN_LIS\XIFIN_Accession.cs">
+      <DependentUpon>XifinLIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\XIFIN_LIS\XIFIN_Address.cs">
+      <DependentUpon>XifinLIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\XIFIN_LIS\XIFIN_Case.cs">
+      <DependentUpon>XifinLIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\XIFIN_LIS\XIFIN_CaseInsurance.cs">
+      <DependentUpon>XifinLIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\XIFIN_LIS\XIFIN_Client.cs">
+      <DependentUpon>XifinLIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\XIFIN_LIS\XIFIN_Doctor.cs">
+      <DependentUpon>XifinLIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\XIFIN_LIS\XIFIN_DoctorIdentification.cs">
+      <DependentUpon>XifinLIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\XIFIN_LIS\XIFIN_Facility.cs">
+      <DependentUpon>XifinLIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\XIFIN_LIS\XIFIN_ICD10.cs">
+      <DependentUpon>XifinLIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\XIFIN_LIS\XIFIN_ICD9.cs">
+      <DependentUpon>XifinLIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\XIFIN_LIS\XIFIN_LabMessage.cs">
+      <DependentUpon>XifinLIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\XIFIN_LIS\XIFIN_LabMessage_Case.cs">
+      <DependentUpon>XifinLIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\XIFIN_LIS\XIFIN_Labs.cs">
+      <DependentUpon>XifinLIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\XIFIN_LIS\XIFIN_Patient.cs">
+      <DependentUpon>XifinLIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\XIFIN_LIS\XIFIN_PatientInsurance.cs">
+      <DependentUpon>XifinLIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\XIFIN_LIS\XIFIN_Phone.cs">
+      <DependentUpon>XifinLIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\XIFIN_LIS\XIFIN_Report.cs">
+      <DependentUpon>XifinLIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\XIFIN_LIS\XIFIN_Result.cs">
+      <DependentUpon>XifinLIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\XIFIN_LIS\XIFIN_Specimen.cs">
+      <DependentUpon>XifinLIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\XIFIN_LIS\XIFIN_TestOrder.cs">
+      <DependentUpon>XifinLIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFDataModel\XIFIN_LIS\XIFIN_TestOrderSpecimen.cs">
+      <DependentUpon>XifinLIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SignalViewModel\BaiFile\AccountGroup.cs" />
+    <Compile Include="SignalViewModel\BaiFile\AccountSummary.cs" />
+    <Compile Include="SignalViewModel\BaiFile\BaiFile.cs" />
+    <Compile Include="SignalViewModel\BaiFile\BaiFileInfo.cs" />
+    <Compile Include="SignalViewModel\BaiFile\Transaction.cs" />
+    <Compile Include="SignalViewModel\BaiFile\TransactionInfo.cs" />
+    <Compile Include="SignalViewModel\BaiFile\TypeCodes.cs" />
+    <Compile Include="SignalViewModel\Configuration.cs" />
+    <Compile Include="SignalViewModel\EnumListItem.cs" />
+    <Compile Include="SignalViewModel\Event.cs" />
+    <Compile Include="SignalViewModel\Events\Event.cs" />
+    <Compile Include="SignalViewModel\Events\EventType.cs" />
+    <Compile Include="SignalViewModel\EventType.cs" />
+    <Compile Include="SignalViewModel\Exception.cs" />
+    <Compile Include="SignalViewModel\FieldMapping.cs" />
+    <Compile Include="SignalViewModel\Note.cs" />
+    <Compile Include="SignalViewModel\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="SignalViewModel\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="SignalViewModel\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="SignalViewModel\Properties\AssemblyInfo.cs" />
+    <Compile Include="SignalViewModel\Report.cs" />
+    <Compile Include="SignalViewModel\ReportType.cs" />
+    <Compile Include="SignalViewModel\TransactionData.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AppDataLib\ConsoleApp\app.config" />
+    <None Include="AppDataLib\ConsoleApp\packages.config" />
+    <None Include="CommonUtilities\AssemblyUtils\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="CommonUtilities\Classifier\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="CommonUtilities\Collections\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="CommonUtilities\CommonUtils.AppConfiguration\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="CommonUtilities\CommonUtils.Crypto\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="CommonUtilities\CommonUtils.Email\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="CommonUtilities\CommonUtils.Html\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="CommonUtilities\CommonUtils.Html\packages.config" />
+    <None Include="CommonUtilities\CommonUtils.MathUtils\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="CommonUtilities\CommonUtils.MathUtils\Properties\Settings.settings" />
+    <None Include="CommonUtilities\CommonUtils.PdfCommon\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="CommonUtilities\CommonUtils.PdfDrawLib\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="CommonUtilities\CommonUtils.PdfDrawLib\packages.config" />
+    <None Include="CommonUtilities\CommonUtils.PdfITextSharp\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="CommonUtilities\CommonUtils.PdfITextSharp\packages.config" />
+    <None Include="CommonUtilities\CommonUtils.PdfPdfSharp\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="CommonUtilities\CommonUtils.PdfPdfSharp\packages.config" />
+    <None Include="CommonUtilities\CommonUtils.PdfPdfSharp\Database\App.config" />
+    <None Include="CommonUtilities\CommonUtils.PdfPdfSharp\Database\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="CommonUtilities\CommonUtils.PdfPdfSharp\Database\packages.config" />
+    <None Include="CommonUtilities\DateUtils\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="CommonUtilities\ExceptionUtils\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="CommonUtilities\ExpandoUtils\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="CommonUtilities\FileUtils\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="CommonUtilities\Json\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="CommonUtilities\Json\packages.config" />
+    <None Include="CommonUtilities\LINQ\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="CommonUtilities\ListUtils\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="CommonUtilities\Logging\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="CommonUtilities\Logging\packages.config" />
+    <None Include="CommonUtilities\MVVMSupport\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="CommonUtilities\Reflection\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="CommonUtilities\SecureString\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="CommonUtilities\Services\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="CommonUtilities\Tasks\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="CommonUtilities\XML\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="CommonUtilities\XML\packages.config" />
+    <None Include="BusinessLayerObjects\PxPortalBusinessLayer\App.config" />
+    <None Include="BusinessLayerObjects\PxPortalBusinessLayer\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="BusinessLayerObjects\PxPortalBusinessLayer\packages.config" />
+    <None Include="BusinessLayerObjects\SignalBusinessLayer\App.config" />
+    <None Include="BusinessLayerObjects\SignalBusinessLayer\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="BusinessLayerObjects\SignalBusinessLayer\packages.config" />
+    <None Include="BusinessLayerObjects\SignalBusinessLayer\README.md" />
+    <None Include="DataLayer\App.config" />
+    <None Include="DataLayer\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="DataLayer\packages.config" />
+    <None Include="EFDataModel\SGNL_LIS\App.config" />
+    <None Include="EFDataModel\SGNL_LIS\packages.config" />
+    <EntityDeploy Include="EFDataModel\SGNL_LIS\SGNL_LIS_Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SGNL_LIS_Model2.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EFDataModel\SGNL_LIS\SGNL_LIS_Model.edmx.diagram">
+      <DependentUpon>SGNL_LIS_Model.edmx</DependentUpon>
+    </None>
+    <None Include="EFDataModel\SignalEFDataModelCommon\App.config" />
+    <None Include="EFDataModel\SignalEFDataModelCommon\packages.config" />
+    <None Include="EFDataModel\XIFIN_LIS\App.config" />
+    <None Include="EFDataModel\XIFIN_LIS\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="EFDataModel\XIFIN_LIS\packages.config" />
+    <EntityDeploy Include="EFDataModel\XIFIN_LIS\XifinLIS_Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>XifinLIS_Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EFDataModel\XIFIN_LIS\XifinLIS_Model.edmx.diagram">
+      <DependentUpon>XifinLIS_Model.edmx</DependentUpon>
+    </None>
+    <None Include="SignalViewModel\app.config" />
+    <None Include="SignalViewModel\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="SignalViewModel\packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AppDataLib\AppDataLib.Exceptions\AppDataLib.Exceptions.csproj" />
+    <Content Include="AppDataLib\BaiParser\AppDataLib.BaiParser.csproj" />
+    <Content Include="AppDataLib\ConsoleApp\AppDataLib.ConsoleApp.csproj" />
+    <Content Include="AppDataLib\Enums\AppDataLib.Enums.csproj" />
+    <Content Include="CommonUtilities\AssemblyUtils\CommonUtils.Build.csproj" />
+    <Content Include="CommonUtilities\Classifier\CommonUtils.Classifier.csproj" />
+    <Content Include="CommonUtilities\Collections\CommonUtils.Collections.csproj" />
+    <Content Include="CommonUtilities\CommonUtils.AppConfiguration\CommonUtils.AppConfiguration.csproj" />
+    <Content Include="CommonUtilities\CommonUtils.Crypto\CommonUtils.Crypto.csproj" />
+    <Content Include="CommonUtilities\CommonUtils.Email\CommonUtils.Email.csproj" />
+    <Content Include="CommonUtilities\CommonUtils.Html\CommonUtils.Html.csproj" />
+    <Content Include="CommonUtilities\CommonUtils.MathUtils\CommonUtils.MathUtils.csproj" />
+    <Content Include="CommonUtilities\CommonUtils.PdfCommon\CommonUtils.PdfCommon.csproj" />
+    <Content Include="CommonUtilities\CommonUtils.PdfDrawLib\CommonUtils.PdfDrawLib.csproj" />
+    <Content Include="CommonUtilities\CommonUtils.PdfITextSharp\CommonUtils.PdfITextSharp.csproj" />
+    <Content Include="CommonUtilities\CommonUtils.PdfPdfSharp\CommonUtils.PdfPdfSharp.csproj" />
+    <Content Include="CommonUtilities\CommonUtils.PdfPdfSharp\Database\CommonUtils.Database.csproj" />
+    <Content Include="CommonUtilities\DataStructures\CommonUtils.DataStructures.csproj" />
+    <Content Include="CommonUtilities\DataTableUtils\CommonUtils.DataTableUtils.csproj" />
+    <Content Include="CommonUtilities\DateUtils\CommonUtils.DateUtils.csproj" />
+    <Content Include="CommonUtilities\ExceptionUtils\CommonUtils.Exception.csproj" />
+    <Content Include="CommonUtilities\ExpandoUtils\CommonUtils.ExpandoUtils.csproj" />
+    <Content Include="CommonUtilities\FileUtils\CommonUtils.FileUtils.csproj" />
+    <Content Include="CommonUtilities\Json\CommonUtils.Json.csproj" />
+    <Content Include="CommonUtilities\LINQ\CommonUtils.LINQ.csproj" />
+    <Content Include="CommonUtilities\ListUtils\CommonUtils.ListUtils.csproj" />
+    <Content Include="CommonUtilities\Logging\CommonUtils.Logging.csproj" />
+    <Content Include="CommonUtilities\MVVMSupport\CommonUtils.MVVMSupport.csproj" />
+    <Content Include="CommonUtilities\Reflection\CommonUtils.Reflection.csproj" />
+    <Content Include="CommonUtilities\SecureString\CommonUtils.SecureString.csproj" />
+    <Content Include="CommonUtilities\Services\CommonUtils.Services.csproj" />
+    <Content Include="CommonUtilities\Tasks\CommonUtils.Tasks.csproj" />
+    <Content Include="CommonUtilities\XML\CommonUtils.XML.csproj" />
+    <Content Include="BusinessLayerObjects\PxPortalBusinessLayer\BusinessLayer.PxPortal.csproj" />
+    <Content Include="BusinessLayerObjects\SignalBusinessLayer\BusinessLayer.csproj" />
+    <Content Include="DataLayer\DataLayer.csproj" />
+    <Content Include="EFDataModel\SGNL_LIS\SGNL_LIS_Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SGNL_LIS_Model.Context1.cs</LastGenOutput>
+    </Content>
+    <Content Include="EFDataModel\SGNL_LIS\SGNL_LIS_Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SGNL_LIS_Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="EFDataModel\SGNL_LIS\SignalEFDataModel.SGNL_LIS.csproj" />
+    <Content Include="EFDataModel\SignalEFDataModelCommon\EFDataModel.Common.csproj" />
+    <Content Include="EFDataModel\XIFIN_LIS\EFDataModel.XIFIN_LIS.csproj" />
+    <Content Include="EFDataModel\XIFIN_LIS\XifinLIS_Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>XifinLIS_Model.Context1.cs</LastGenOutput>
+    </Content>
+    <Content Include="EFDataModel\XIFIN_LIS\XifinLIS_Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>XifinLIS_Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="SignalViewModel\ViewModel.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CommonUtilities\CommonUtils.MathUtils\Properties\Resources.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BusinessLayerObjects\PxPortalBusinessLayer\bin\Debug\" />
+    <Folder Include="BusinessLayerObjects\PxPortalBusinessLayer\obj\Debug\TempPE\" />
+    <Folder Include="BusinessLayerObjects\SignalBusinessLayer\bin\Debug\" />
+    <Folder Include="BusinessLayerObjects\SignalBusinessLayer\obj\Debug\TempPE\" />
+    <Folder Include="CommonUtilities\AssemblyUtils\bin\Debug\" />
+    <Folder Include="CommonUtilities\AssemblyUtils\obj\Debug\TempPE\" />
+    <Folder Include="CommonUtilities\Classifier\bin\Debug\" />
+    <Folder Include="CommonUtilities\Classifier\obj\Debug\TempPE\" />
+    <Folder Include="CommonUtilities\Collections\bin\Debug\" />
+    <Folder Include="CommonUtilities\Collections\obj\Debug\TempPE\" />
+    <Folder Include="CommonUtilities\CommonUtils.AppConfiguration\bin\Debug\" />
+    <Folder Include="CommonUtilities\CommonUtils.AppConfiguration\obj\Debug\TempPE\" />
+    <Folder Include="CommonUtilities\CommonUtils.Crypto\bin\Debug\" />
+    <Folder Include="CommonUtilities\CommonUtils.Crypto\obj\Debug\TempPE\" />
+    <Folder Include="CommonUtilities\CommonUtils.Email\bin\Debug\" />
+    <Folder Include="CommonUtilities\CommonUtils.Email\obj\Debug\TempPE\" />
+    <Folder Include="CommonUtilities\CommonUtils.Html\bin\Debug\" />
+    <Folder Include="CommonUtilities\CommonUtils.Html\obj\Debug\TempPE\" />
+    <Folder Include="CommonUtilities\CommonUtils.MathUtils\bin\Debug\" />
+    <Folder Include="CommonUtilities\CommonUtils.MathUtils\obj\Debug\TempPE\" />
+    <Folder Include="CommonUtilities\CommonUtils.PdfCommon\bin\Debug\" />
+    <Folder Include="CommonUtilities\CommonUtils.PdfCommon\obj\Debug\TempPE\" />
+    <Folder Include="CommonUtilities\CommonUtils.PdfDrawLib\bin\Debug\" />
+    <Folder Include="CommonUtilities\CommonUtils.PdfDrawLib\obj\Debug\TempPE\" />
+    <Folder Include="CommonUtilities\CommonUtils.PdfITextSharp\bin\Debug\" />
+    <Folder Include="CommonUtilities\CommonUtils.PdfITextSharp\obj\Debug\TempPE\" />
+    <Folder Include="CommonUtilities\CommonUtils.PdfPdfSharp\bin\Debug\" />
+    <Folder Include="CommonUtilities\CommonUtils.PdfPdfSharp\Database\bin\Debug\" />
+    <Folder Include="CommonUtilities\CommonUtils.PdfPdfSharp\Database\obj\Debug\TempPE\" />
+    <Folder Include="CommonUtilities\CommonUtils.PdfPdfSharp\obj\Debug\TempPE\" />
+    <Folder Include="CommonUtilities\DateUtils\bin\Debug\" />
+    <Folder Include="CommonUtilities\DateUtils\obj\Debug\TempPE\" />
+    <Folder Include="CommonUtilities\ExceptionUtils\bin\Debug\" />
+    <Folder Include="CommonUtilities\ExceptionUtils\obj\Debug\TempPE\" />
+    <Folder Include="CommonUtilities\ExpandoUtils\bin\Debug\" />
+    <Folder Include="CommonUtilities\ExpandoUtils\obj\Debug\TempPE\" />
+    <Folder Include="CommonUtilities\FileUtils\bin\Debug\" />
+    <Folder Include="CommonUtilities\FileUtils\obj\Debug\TempPE\" />
+    <Folder Include="CommonUtilities\Json\bin\Debug\" />
+    <Folder Include="CommonUtilities\Json\obj\Debug\TempPE\" />
+    <Folder Include="CommonUtilities\LINQ\bin\Debug\" />
+    <Folder Include="CommonUtilities\LINQ\obj\Debug\TempPE\" />
+    <Folder Include="CommonUtilities\ListUtils\bin\Debug\" />
+    <Folder Include="CommonUtilities\ListUtils\obj\Debug\TempPE\" />
+    <Folder Include="CommonUtilities\Logging\bin\Debug\" />
+    <Folder Include="CommonUtilities\Logging\obj\Debug\TempPE\" />
+    <Folder Include="CommonUtilities\MVVMSupport\bin\Debug\" />
+    <Folder Include="CommonUtilities\MVVMSupport\obj\Debug\TempPE\" />
+    <Folder Include="CommonUtilities\Reflection\bin\Debug\" />
+    <Folder Include="CommonUtilities\Reflection\obj\Debug\TempPE\" />
+    <Folder Include="CommonUtilities\SecureString\bin\Debug\" />
+    <Folder Include="CommonUtilities\SecureString\obj\Debug\TempPE\" />
+    <Folder Include="CommonUtilities\Services\bin\Debug\" />
+    <Folder Include="CommonUtilities\Services\obj\Debug\TempPE\" />
+    <Folder Include="CommonUtilities\Tasks\bin\Debug\" />
+    <Folder Include="CommonUtilities\Tasks\obj\Debug\TempPE\" />
+    <Folder Include="CommonUtilities\XML\bin\Debug\" />
+    <Folder Include="CommonUtilities\XML\obj\Debug\TempPE\" />
+    <Folder Include="DataLayer\bin\Debug\" />
+    <Folder Include="DataLayer\obj\Debug\TempPE\" />
+    <Folder Include="EFDataModel\XIFIN_LIS\bin\Debug\" />
+    <Folder Include="EFDataModel\XIFIN_LIS\obj\Debug\TempPE\" />
+    <Folder Include="SignalViewModel\bin\Debug\" />
+    <Folder Include="SignalViewModel\obj\Debug\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -57,5 +692,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-
- </Project>
+</Project>

@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{49D98414-1109-423C-AFB4-61D67C92C4E6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SignalEFDataModel.SGNL_LIS</RootNamespace>
+    <AssemblyName>SignalEFDataModel.SGNL_LIS</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'SignalCi|AnyCPU'">
+    <OutputPath>bin\SignalCi\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Accession.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CaseErrorReport.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CELHeaderInfo.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Client.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Doctor.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="enum_PlaceOfService.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Facility.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lab.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LisCase.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Note.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Partials\SGNL_LISEntities.cs" />
+    <Compile Include="Patient.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientInsurance.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Payor.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SGNL_LIS_Model.Context.cs">
+      <DependentUpon>SGNL_LIS_Model.Context.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="SGNL_LIS_Model.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="SGNL_LIS_Model.Designer.cs">
+      <DependentUpon>SGNL_LIS_Model.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="SGNL_LIS_Model1.Designer.cs">
+      <DependentUpon>SGNL_LIS_Model.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="usp_GetAnalyticsCasePatientInfo_Result.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vi_apiGetBillingCases.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vi_ClientDoctor.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vi_DoctorClientList.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vi_GetAnalyticsCasePatientInfo.cs">
+      <DependentUpon>SGNL_LIS_Model.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <EntityDeploy Include="SGNL_LIS_Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SGNL_LIS_Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="SGNL_LIS_Model.edmx.diagram">
+      <DependentUpon>SGNL_LIS_Model.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SGNL_LIS_Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SGNL_LIS_Model.edmx</DependentUpon>
+      <LastGenOutput>SGNL_LIS_Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SGNL_LIS_Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SGNL_LIS_Model.edmx</DependentUpon>
+      <LastGenOutput>SGNL_LIS_Model.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
